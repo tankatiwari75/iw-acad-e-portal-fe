@@ -8,7 +8,7 @@ import Breadcrumber from "./Component/Breadcrumb/Breadcrumber"
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-light">
       <Navigation />
       <Breadcrumber />
       <Maincontent />

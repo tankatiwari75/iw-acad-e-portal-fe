@@ -23,7 +23,7 @@ const toggle = () => setIsOpen(!isOpen);
 
 return (
 <div>
-    <Navbar color="warning" light expand="md">
+    <Navbar color="light" light expand="md">
         <NavbarBrand href="/">E-Portal</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
