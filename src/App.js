@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navigation from './Component/Navigationbar/navigationbar'
+import Maincontent from './Component/Content/Maincontent'
+import Breadcrumber from "./Component/Breadcrumb/Breadcrumber"
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-light">
+      <Navigation />
+      <Breadcrumber />
+      <Maincontent />
     </div>
   );
 }
