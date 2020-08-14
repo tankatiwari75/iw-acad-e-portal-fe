@@ -28,7 +28,7 @@ const Navigationbar = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">E-Portal</NavbarBrand>
+        <NavbarBrand href="/"><span className='display-5'>E-Portal</span></NavbarBrand>
         <NavbarToggler onClick={toggle}/>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>

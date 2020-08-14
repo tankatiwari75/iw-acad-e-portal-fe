@@ -5,12 +5,12 @@ import Maincontent from './Component/Content/Maincontent'
 import Breadcrumber from "./Component/Breadcrumb/Breadcrumber"
 
 // React-router-dom
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 // react-router-dom imported
 // import profile, calendar
 import Profile from "./Component/Content/Profile/Profile"
 import Calendar from "./Component/Content/Calendar/Calendar"
-import Dashboard from './Component/HomeContent/Dashboard/Dashboard';
+import Notice from './Component/HomeContent/Notice/Notice';
 import Attendance from './Component/HomeContent/Attendance/Attendance';
 import Result from './Component/HomeContent/Result/Result';
 import Timetable from './Component/HomeContent/Timetable/Timetable';
@@ -23,11 +23,11 @@ function App() {
     <Router>
       <div className="App bg-light">
         <Navigation/>
-        <Breadcrumber/>
+        <Breadcrumber titlename = "Rajeet"/>
         <Route path="/" exact component={Maincontent} />
         <Route path="/Profile" component={Profile} /> 
         <Route path='/calendar' component={Calendar} />
-        <Route path='/dashboard' component={Dashboard}/>
+        <Route path='/notice' component={Notice}/>
         <Route path='/attendance' component={Attendance}/>
         <Route path='/result' component={Result}/>
         <Route path='/time-table' component={Timetable}/>
