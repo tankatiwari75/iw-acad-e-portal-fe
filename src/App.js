@@ -1,25 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navigation from './Component/Navigationbar/navigationbar'
+import Maincontent from './Component/Content/Maincontent'
+import Breadcrumber from "./Component/Breadcrumb/Breadcrumber"
+
+// React-router-dom
+import {BrowserRouter as Router, Route} from "react-router-dom";
+// react-router-dom imported
+// import profile, calendar
+import Profile from "./Component/Content/Profile/Profile"
+import Calendar from "./Component/Content/Calendar/Calendar"
+import Notice from './Component/HomeContent/Notice/Notice';
+import Attendance from './Component/HomeContent/Attendance/Attendance';
+import Result from './Component/HomeContent/Result/Result';
+import Timetable from './Component/HomeContent/Timetable/Timetable';
+import Schedule from './Component/HomeContent/Schedule/Schedule';
+
+// imported Profile
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App bg-light">
+        <Navigation/>
+        <Breadcrumber titlename = "Rajeet"/>
+        <Route path="/" exact component={Maincontent} />
+        <Route path="/Profile" component={Profile} /> 
+        <Route path='/calendar' component={Calendar} />
+        <Route path='/notice' component={Notice}/>
+        <Route path='/attendance' component={Attendance}/>
+        <Route path='/result' component={Result}/>
+        <Route path='/time-table' component={Timetable}/>
+        <Route path='/schedule' component={Schedule}/>
+        {/* This is for message */}
+        {/* <Route path='/schedule' component={Schedule}/> */}
+        {/* this is for message */}
+      </div>
+    </Router>
+
   );
 }
 
