@@ -15,10 +15,14 @@ import Attendance from './Component/HomeContent/Attendance/Attendance';
 import Result from './Component/HomeContent/Result/Result';
 import Timetable from './Component/HomeContent/Timetable/Timetable';
 import Schedule from './Component/HomeContent/Schedule/Schedule';
+import Logout from "./Component/Content/Logout/Logout"
+import Login from "./Component/Content/Login/Login"
 
 // imported Profile
+const login = false;
 
 function App() {
+  if (login){
   return (
     <Router>
       <div className="App bg-light">
@@ -32,13 +36,26 @@ function App() {
         <Route path='/result' component={Result}/>
         <Route path='/time-table' component={Timetable}/>
         <Route path='/schedule' component={Schedule}/>
+        <Route path='/logout' component={Logout}/>
         {/* This is for message */}
         {/* <Route path='/schedule' component={Schedule}/> */}
         {/* this is for message */}
       </div>
     </Router>
+    
+  );}
+  else {
+    return(
+      <div>
+      <Router>
 
-  );
+      <Route path="/login" component={Login}>
+
+      </Route>
+    </Router>
+    </div>
+    )
+  }
 }
 
 export default App;
