@@ -15,10 +15,25 @@ import Attendance from './Component/HomeContent/Attendance/Attendance';
 import Result from './Component/HomeContent/Result/Result';
 import Timetable from './Component/HomeContent/Timetable/Timetable';
 import Schedule from './Component/HomeContent/Schedule/Schedule';
+import Logout from "./Component/Content/Logout/Logout"
+// import Login from "./Component/Content/Login/Login"
+ import AdminPanel from "./Component/AdminPanel/AdminPanel"
+ import Managestudent from "./Component/AdminPanel/Managestudent/Managestudent"
+
+import ManageTeacher from './Component/AdminPanel/ManageTeacher/ManageTeacher';
+import ManageClass from './Component/AdminPanel/ManageClass/ManageClass';
+import ManageSubject from './Component/AdminPanel/ManageSubject/ManageSubject';
+import ManageNotice from './Component/AdminPanel/ManageNotice/ManageNotice';
+
 
 // imported Profile
+const login = true;
+const  student = false;
+const teacher = false;
+const admin = true;
 
 function App() {
+  if (login && student){
   return (
     <Router>
       <div className="App bg-light">
@@ -32,13 +47,31 @@ function App() {
         <Route path='/result' component={Result}/>
         <Route path='/time-table' component={Timetable}/>
         <Route path='/schedule' component={Schedule}/>
+        <Route path='/logout' component={Logout}/>
         {/* This is for message */}
         {/* <Route path='/schedule' component={Schedule}/> */}
         {/* this is for message */}
       </div>
     </Router>
+    
+  );}
+  else if (login && admin) {
+    return (
+      <Router>
+        <div className="App bg-light">
+          <Navigation/>
+          <Breadcrumber titlename = "Rajeet"/>
+          <Route path="/" exact component={AdminPanel} />
+          <Route path="/managestudent" component={Managestudent} /> 
+          <Route path="/manageteacher" component={ManageTeacher} /> 
+          <Route path="/manageclassroom" component={ManageClass} /> 
+          <Route path="/managesubject" component={ManageSubject} /> 
+          <Route path="/managenotice" component={ManageNotice} /> 
 
-  );
+
+        </div>
+      </Router>)
+  }
 }
 
 export default App;
