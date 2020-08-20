@@ -16,13 +16,24 @@ import Result from './Component/HomeContent/Result/Result';
 import Timetable from './Component/HomeContent/Timetable/Timetable';
 import Schedule from './Component/HomeContent/Schedule/Schedule';
 import Logout from "./Component/Content/Logout/Logout"
-import Login from "./Component/Content/Login/Login"
+// import Login from "./Component/Content/Login/Login"
+ import AdminPanel from "./Component/AdminPanel/AdminPanel"
+ import Managestudent from "./Component/AdminPanel/Managestudent/Managestudent"
+
+import ManageTeacher from './Component/AdminPanel/ManageTeacher/ManageTeacher';
+import ManageClass from './Component/AdminPanel/ManageClass/ManageClass';
+import ManageSubject from './Component/AdminPanel/ManageSubject/ManageSubject';
+import ManageNotice from './Component/AdminPanel/ManageNotice/ManageNotice';
+
 
 // imported Profile
-const login = false;
+const login = true;
+const  student = false;
+const teacher = false;
+const admin = true;
 
 function App() {
-  if (login){
+  if (login && student){
   return (
     <Router>
       <div className="App bg-light">
@@ -44,17 +55,22 @@ function App() {
     </Router>
     
   );}
-  else {
-    return(
-      <div>
+  else if (login && admin) {
+    return (
       <Router>
+        <div className="App bg-light">
+          <Navigation/>
+          <Breadcrumber titlename = "Rajeet"/>
+          <Route path="/" exact component={AdminPanel} />
+          <Route path="/managestudent" component={Managestudent} /> 
+          <Route path="/manageteacher" component={ManageTeacher} /> 
+          <Route path="/manageclassroom" component={ManageClass} /> 
+          <Route path="/managesubject" component={ManageSubject} /> 
+          <Route path="/managenotice" component={ManageNotice} /> 
 
-      <Route path="/login" component={Login}>
 
-      </Route>
-    </Router>
-    </div>
-    )
+        </div>
+      </Router>)
   }
 }
 
