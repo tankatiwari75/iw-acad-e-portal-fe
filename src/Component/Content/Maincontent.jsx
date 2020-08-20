@@ -26,7 +26,7 @@ return (
        <div className="row">
        <Link className="col-sm box btn-ripple nounderline" to='/time-table'><FaClock className='icons text-danger'/><h5 className="text-danger">Time Table</h5></Link>
        <Link className="col-sm box btn-ripple nounderline" to='/schedule'><FaBookOpen className='icons text-warning'/><h5 className="text-warning">Exam Schedule</h5></Link>
-           <div className="col-sm box btn-ripple"><FaEnvelopeOpen className='icons text-primary'/><h5 className="text-primary">My Messages</h5></div>
+           <div className="col-sm box btn-ripple" ><FaEnvelopeOpen className='icons text-primary'/><h5 className="text-primary">My Messages</h5></div>
            
            {/* <div className="col-sm">Recent Activity</div> */}
        </div>
