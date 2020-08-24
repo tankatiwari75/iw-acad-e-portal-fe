@@ -15,8 +15,8 @@ import Attendance from './Component/StudentPanel/Attendance/Attendance';
 import Result from './Component/StudentPanel/Result/Result';
 import Timetable from './Component/StudentPanel/Timetable/Timetable';
 import Schedule from './Component/StudentPanel/Schedule/Schedule';
-import Logout from "./Component/NavbarContent/Logout/Logout"
-// import Login from "./Component/Login/Login"
+import Logout from "./Component/Logout/Logout"
+import Login from "./Component/Login/Login"
 
 // import admin views
  import AdminPanel from "./Component/AdminPanel/AdminPanel"
@@ -37,7 +37,7 @@ import TeacherNotice from "./Component/Teacher/TeacherNotice/TeacherNotice"
 // imported Profile
 const login = true;
 const  student = false;
-const teacher = true;
+const teacher = false;
 const admin = false;
 
 function App() {
@@ -106,9 +106,9 @@ function App() {
   }
   else{
     return (
-      <Router>
-        
-      </Router>
+      <div>
+        <Login />
+      </div>
       )
   }
 }
