@@ -4,7 +4,8 @@ import { Redirect } from 'react-router-dom';
 const DeleteStudent = ({match}) => {
     // const [del, setDel] = useState(false);
     const deleteStudentFunction = async() =>{
-       const fetchdeletedata = await fetch(`http://127.0.0.1:8000/adminsite/studentregister/${match.params.id}`,{method: 'DELETE'});
+       const fetchdeletedata = await fetch(`http://127.0.0.1:8000/adminsite/studentregister/${match.params.id}`,{method: 'DELETE'})
+       .then(() => window.location="/managestudent");
     //    setDel = true
     }
     useEffect(() => {
@@ -15,7 +16,10 @@ const DeleteStudent = ({match}) => {
 
     return (
         // checkDel
-        <Redirect to="/managestudent" />
+        // <Redirect to="/managestudent" />
+        <div>
+
+        </div>
     );
 };
 
