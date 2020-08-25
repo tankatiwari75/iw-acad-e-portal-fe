@@ -26,10 +26,14 @@ import ManageTeacher from './Component/AdminPanel/ManageTeacher/ManageTeacher';
 import ManageClass from './Component/AdminPanel/ManageClass/ManageClass';
 import ManageSubject from './Component/AdminPanel/ManageSubject/ManageSubject';
 import ManageNotice from './Component/AdminPanel/ManageNotice/ManageNotice';
+import AddStudent from "./Component/AdminPanel/Managestudent/AddStudent/AddStudent"
+import StudentDetail from './Component/AdminPanel/Managestudent/StudentDetail/StudentDetail';
+
 
 //import teacher views
 import TeacherPanel from "./Component/Teacher/TeacherPanel"
 import TeacherNotice from "./Component/Teacher/TeacherNotice/TeacherNotice"
+import DeleteStudent from './Component/AdminPanel/Managestudent/DeleteStudent/DeleteStudent';
 
 
 
@@ -38,7 +42,7 @@ import TeacherNotice from "./Component/Teacher/TeacherNotice/TeacherNotice"
 const login = true;
 const  student = false;
 const teacher = false;
-const admin = false;
+const admin = true;
 
 function App() {
   if (login && student){
@@ -70,11 +74,14 @@ function App() {
           <Navigation/>
           <Breadcrumber titlename = "Rajeet"/>
           <Route path="/" exact component={AdminPanel} />
-          <Route path="/managestudent" component={Managestudent} /> 
+          <Route path="/managestudent" exact component={Managestudent} /> 
           <Route path="/manageteacher" component={ManageTeacher} /> 
           <Route path="/manageclassroom" component={ManageClass} /> 
           <Route path="/managesubject" component={ManageSubject} /> 
-          <Route path="/managenotice" component={ManageNotice} /> 
+          <Route path="/managenotice" component={ManageNotice} />
+          <Route path="/managestudent/add-student" component = {AddStudent} /> 
+          <Route path="/managestudent/view-student-detail/:id" component = {StudentDetail} /> 
+          <Route path="/managestudent/delete-student/:id" component = {DeleteStudent} /> 
 
           <Route path='/calendar' component={Calendar} />
           <Route path='/logout' component={Logout}/>
