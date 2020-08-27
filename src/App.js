@@ -38,7 +38,7 @@ import TeacherNotice from "./Component/Teacher/TeacherNotice/TeacherNotice"
 const login = true;
 const  student = false;
 const teacher = false;
-const admin = false;
+const admin = true;
 
 function App() {
   if (login && student){

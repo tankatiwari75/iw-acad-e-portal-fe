@@ -13,6 +13,8 @@ import {
 
 } from "reactstrap"
 function ManageNotice(props) {
+    
+
 return (
 <div className="maincontent">
    <div className="container">
