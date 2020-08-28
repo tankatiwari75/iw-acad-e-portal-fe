@@ -25,6 +25,10 @@ import Login from "./Component/Login/Login"
 import ManageTeacher from './Component/AdminPanel/ManageTeacher/ManageTeacher';
 import ManageClass from './Component/AdminPanel/ManageClass/ManageClass';
 import ManageSubject from './Component/AdminPanel/ManageSubject/ManageSubject';
+import AddNotice from './Component/AdminPanel/ManageNotice/AddNotice/AddNotice';
+import DeleteNotice from './Component/AdminPanel/ManageNotice/DeleteNotice/DeleteNotice';
+import UpdateNotice from './Component/AdminPanel/ManageNotice/UpdateNotice/UpdateNotice';
+
 import ManageNotice from './Component/AdminPanel/ManageNotice/ManageNotice';
 
 //import teacher views
@@ -74,8 +78,10 @@ function App() {
           <Route path="/manageteacher" component={ManageTeacher} /> 
           <Route path="/manageclassroom" component={ManageClass} /> 
           <Route path="/managesubject" component={ManageSubject} /> 
-          <Route path="/managenotice" component={ManageNotice} /> 
-
+          <Route path="/managenotice" exact component={ManageNotice} /> 
+          <Route path="/managenotice/add-notice" component={AddNotice}/>
+          <Route path="/managenotice/delete-notice/:id" component={DeleteNotice}/>
+          <Route path="/managenotice/update-notice/:id" component={UpdateNotice}/>
           <Route path='/calendar' component={Calendar} />
           <Route path='/logout' component={Logout}/>
 

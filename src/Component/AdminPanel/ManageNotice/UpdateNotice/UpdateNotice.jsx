@@ -1,20 +1,35 @@
-import React, { useState, useEffect } from 'react'
-
+import React, { useEffect, useState } from 'react';
+import {FaPlus, FaEdit, FaTrash, FaMinus, FaInfo} from 'react-icons/fa';
 import {
     Button,
     Form,
     FormGroup,
-    Input,
     Label,
-} from 'reactstrap';
-function AddNotice(props) {
+    Input,
+    FormText
+  } from 'reactstrap';
+
+import {Link} from "react-router-dom";
+import { Redirect } from 'react-router-dom';
+
+const UpdateNotice=({match})=> {
+    const [del, setDel] = useState(false);
     const [datas, setDatas] = useState({
         "notice_title": "",
         "notice_description": "",
-        "created_by": "School Management",
+        "created_by": "tanka",
     })
 
-    console.log(datas)
+    const editNoticeFunction = async() =>{
+        const fetchdeletedata = await fetch(`http://127.0.0.1:8000/adminsite/noticeboard/${match.params.id}`)
+        setDatas(fetchdeletedata)
+     //    setDel = true
+     }
+     console.log(datas)
+     useEffect(() => {
+        editNoticeFunction();
+       }, [])
+    
     const handleChange = (event) => {
         const { name, value } = event.target;
         setDatas(prevState => ({
@@ -25,14 +40,14 @@ function AddNotice(props) {
 
     const handleSubmit = () => {
         const daat = {
-                "notice_title": "Hello",
-                "notice_description": "Hi There",
-                "created_by": "School Management",
+                "notice_title": "",
+                "notice_description": "",
+                "created_by": "",
             }
             // const redirection = (<Redirect to="/managenotice" />)
             const fetchnoticepost = fetch ("http://127.0.0.1:8000/adminsite/noticeboard/", 
             {
-                method: 'POST', 
+                method: 'PUT', 
                 body:JSON.stringify(datas), 
                 headers:{ 
                     "Content-Type": "application/json"
@@ -78,4 +93,4 @@ function AddNotice(props) {
     )
 }
 
-export default AddNotice;
+export default UpdateNotice;
