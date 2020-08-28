@@ -65,13 +65,6 @@ function ManageTeacher({match}) {
               </tr>
             </thead>
             <tbody>
-              {/* <tr>
-          <th scope="row">1</th>
-          <td>ok google</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Detail || Delete || Update</td>
-          </tr> */}
 
               {data.map(teacher => (
                 <tr>
