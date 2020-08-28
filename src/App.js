@@ -9,7 +9,7 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 // react-router-dom imported
 // import profile, calendar
 import Profile from "./Component/NavbarContent/Profile/Profile"
-import Calendar from "./Component/NavbarContent/Calendar/Calendar"
+import CalenderDetails from "./Component/NavbarContent/Calendar/Calendar"
 import Notice from './Component/StudentPanel/Notice/Notice';
 import Attendance from './Component/StudentPanel/Attendance/Attendance';
 import Result from './Component/StudentPanel/Result/Result';
@@ -53,7 +53,7 @@ function App() {
         <Breadcrumber titlename = "Rajeet"/>
         <Route path="/" exact component={StudentPanel} />
         <Route path="/Profile" component={Profile} /> 
-        <Route path='/calendar' component={Calendar} />
+        <Route path='/calendar' component={CalenderDetails} />
         <Route path='/notice' component={Notice}/>
         <Route path='/attendance' component={Attendance}/>
         <Route path='/result' component={Result}/>
@@ -82,7 +82,7 @@ function App() {
           <Route path="/managenotice/add-notice" component={AddNotice}/>
           <Route path="/managenotice/delete-notice/:id" component={DeleteNotice}/>
           <Route path="/managenotice/update-notice/:id" component={UpdateNotice}/>
-          <Route path='/calendar' component={Calendar} />
+          <Route path='/calendar' component={CalenderDetails} />
           <Route path='/logout' component={Logout}/>
 
 
@@ -100,7 +100,7 @@ function App() {
           <Route path="/notice" component={TeacherNotice} /> 
 
 
-          <Route path='/calendar' component={Calendar} />
+          <Route path='/calendar' component={CalenderDetails} />
           <Route path='/logout' component={Logout}/>
 
          
