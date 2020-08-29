@@ -71,6 +71,7 @@ function ManageTeacher({match}) {
                   <th scope="row">{sn++}</th>
                   <td>{teacher.first_name + "  " + teacher.middle_name + " " + teacher.last_name}</td>
                   <td>{teacher.email}</td>
+                  <td>{teacher.phonenumber}</td>
                   <td>{teacher.qualification}</td>
                   <td>
                     <Link to={`${match.url}/view-teacher-detail/${teacher.id}`} className='col-sm'>

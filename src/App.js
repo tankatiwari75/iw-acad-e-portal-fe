@@ -30,6 +30,7 @@ import AddStudent from "./Component/AdminPanel/Managestudent/AddStudent/AddStude
 import StudentDetail from './Component/AdminPanel/Managestudent/StudentDetail/StudentDetail';
 import AddTeacher from "./Component/AdminPanel/ManageTeacher/AddTeacher/AddTeacher";
 import DeleteTeacher from "./Component/AdminPanel/ManageTeacher/DeleteTeacher/DeleteTeacher";
+import TeacherDetail from './Component/AdminPanel/ManageTeacher/TeacherDetail/TeacherDetail';
 
 
 //import teacher views
@@ -80,6 +81,7 @@ function App() {
           <Route path="/manageteacher" component={ManageTeacher} />
           <Route path="/manageteacher/add-teacher" component={AddTeacher} />
           <Route path="/manageteacher/delete-teacher" component={DeleteTeacher} />
+          <Route path="/manageteacher/view-teacher-detail/:id" component={TeacherDetail} />
           <Route path="/manageclassroom" component={ManageClass} /> 
           <Route path="/managesubject" component={ManageSubject} /> 
           <Route path="/managenotice" component={ManageNotice} />
