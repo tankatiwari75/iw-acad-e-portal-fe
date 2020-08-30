@@ -33,6 +33,8 @@ import AddSubject from "./Component/AdminPanel/ManageSubject/AddSubject/AddSubje
 import EditSubject from "./Component/AdminPanel/ManageSubject/EditSubject/EditSubject";
 import DeleteSubject from "./Component/AdminPanel/ManageSubject/DeleteSubject/DeleteSubject";
 import SubjectDetail from "./Component/AdminPanel/ManageSubject/SubjectDetail/SubjectDetail";
+import AddClass from "./Component/AdminPanel/ManageClass/AddClass/AddClass";
+import DeleteClass from "./Component/AdminPanel/ManageClass/DeleteClass/DeleteClass";  
 
 
 
@@ -92,6 +94,8 @@ function App() {
           <Route path="/edit-subject" component = {EditSubject} /> 
           <Route path="/delete-subject" component = {DeleteSubject} />
           <Route path="/view-subject-detail" component = {SubjectDetail} /> 
+          <Route path="/add-class" component = {AddClass} /> 
+          <Route path="/delete-class" component = {DeleteClass} /> 
 
           <Route path='/calendar' component={Calendar} />
           <Route path='/logout' component={Logout}/> 

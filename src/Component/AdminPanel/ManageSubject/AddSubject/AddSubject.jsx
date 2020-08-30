@@ -28,7 +28,7 @@ const AddSubject = (props) => {
     }
 
     const handleSubmit = () => {
-        const daat = {
+        const data = {
                 "class_name": "",
                 "subject_name": "",
                 "subject_syllabus": "null"
@@ -46,7 +46,7 @@ const AddSubject = (props) => {
             .then(() => window.location="/managesubject");
             // .then(redirection)
                       
-            console.log(daat)
+            console.log(data)
 }
 
 
