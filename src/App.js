@@ -34,15 +34,17 @@ import ManageNotice from './Component/AdminPanel/ManageNotice/ManageNotice';
 //import teacher views
 import TeacherPanel from "./Component/Teacher/TeacherPanel"
 import TeacherNotice from "./Component/Teacher/TeacherNotice/TeacherNotice"
+import TeacherAttendance from "./Component/Teacher/TeacherAttendance/TeacherAttendance"
+
 
 
 
 
 // imported Profile
 const login = true;
-const  student = false;
+const  student = true;
 const teacher = false;
-const admin = true;
+const admin = false;
 
 function App() {
   if (login && student){
@@ -97,7 +99,8 @@ function App() {
           <Navigation/>
           <Breadcrumber titlename = "Rajeet"/>
           <Route path="/" exact component={TeacherPanel} />
-          <Route path="/notice" component={TeacherNotice} /> 
+          <Route path="/notice" component={TeacherNotice} />
+          <Route path="/attendance-upload" component={TeacherAttendance} />  
 
 
           <Route path='/calendar' component={CalenderDetails} />
