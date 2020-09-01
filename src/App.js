@@ -33,13 +33,15 @@ import UpdateNotice from './Component/AdminPanel/ManageNotice/UpdateNotice/Updat
 import ManageNotice from './Component/AdminPanel/ManageNotice/ManageNotice';
 import AddStudent from "./Component/AdminPanel/Managestudent/AddStudent/AddStudent"
 import StudentDetail from './Component/AdminPanel/Managestudent/StudentDetail/StudentDetail';
+import AddTeacher from "./Component/AdminPanel/ManageTeacher/AddTeacher/AddTeacher";
+import DeleteTeacher from "./Component/AdminPanel/ManageTeacher/DeleteTeacher/DeleteTeacher";
+import TeacherDetail from './Component/AdminPanel/ManageTeacher/TeacherDetail/TeacherDetail';
 import AddSubject from "./Component/AdminPanel/ManageSubject/AddSubject/AddSubject";
 import EditSubject from "./Component/AdminPanel/ManageSubject/EditSubject/EditSubject";
 import DeleteSubject from "./Component/AdminPanel/ManageSubject/DeleteSubject/DeleteSubject";
 import SubjectDetail from "./Component/AdminPanel/ManageSubject/SubjectDetail/SubjectDetail";
 import AddClass from "./Component/AdminPanel/ManageClass/AddClass/AddClass";
 import DeleteClass from "./Component/AdminPanel/ManageClass/DeleteClass/DeleteClass";  
-
 
 
 //import teacher views
@@ -86,11 +88,13 @@ function App() {
           <Breadcrumber titlename = "Rajeet"/>
           <Route path="/" exact component={AdminPanel} />
           <Route path="/managestudent" exact component={Managestudent} /> 
-          <Route path="/manageteacher" component={ManageTeacher} /> 
+          <Route path="/manageteacher" component={ManageTeacher} />
+          <Route path="/manageteacher/add-teacher" component={AddTeacher} />
+          <Route path="/manageteacher/delete-teacher" component={DeleteTeacher} />
+          <Route path="/manageteacher/view-teacher-detail/:id" component={TeacherDetail} />
           <Route path="/manageclassroom" component={ManageClass} /> 
           <Route path="/managesubject" component={ManageSubject} /> 
-<<<<<<< HEAD
-          <Route path="/managenotice" component={ManageNotice} />
+          // <Route path="/managenotice" component={ManageNotice} />
           <Route path="/managestudent/add-student" component = {AddStudent} />
           <Route path="/managestudent/view-student-detail/:id" component = {StudentDetail} /> 
           <Route path="/managestudent/delete-student/:id" component = {DeleteStudent} /> 
@@ -103,14 +107,12 @@ function App() {
 
           <Route path='/calendar' component={Calendar} />
           <Route path='/logout' component={Logout}/> 
-=======
           <Route path="/managenotice" exact component={ManageNotice} /> 
           <Route path="/managenotice/add-notice" component={AddNotice}/>
           <Route path="/managenotice/delete-notice/:id" component={DeleteNotice}/>
           <Route path="/managenotice/update-notice/:id" component={UpdateNotice}/>
           <Route path='/calendar' component={CalenderDetails} />
           <Route path='/logout' component={Logout}/>
->>>>>>> tankaedit
 
 
 
