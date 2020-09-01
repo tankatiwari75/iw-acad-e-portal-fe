@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useState, useEffect } from 'react';
 import {
   Button,
   Form,
@@ -7,117 +7,211 @@ import {
   Input,
   FormText
 } from 'reactstrap';
+import { Redirect } from 'react-router-dom';
 
 const AddStudent = (props) => {
+    const [datas, setDatas] = useState({
 
-  const studentPostApi = () => {
-    console.log("Student Added")
-  }
+        "profile_picture": null,
+        "first_name": "",
+        "middle_name": "",
+        "last_name": "",
+        "email": "",
+        "admission_number": 1,
+        "age": 21,
+        "gender": "",
+        "parents_number": "",
+        "date_of_birth": "",
+        "address": "",
+        "password": "",
+        "class_number": ""
+        
 
-  console.log("this props", props.location.aboutProps)
+    })
+
+    console.log(datas)
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setDatas(prevState => ({
+            ...prevState,
+            [name]: value
+        }))  
+    }
+
+    const handleSubmit = () => {
+        const daat = {
+                "profile_picture": null,
+                "first_name": "a",
+                "middle_name": "",
+                "last_name": "s",
+                "email": "aa@gmail.com",
+                "admission_number": 1,
+                "age": 21,
+                "gender": "M",
+                "parents_number": "2334567894",
+                "date_of_birth": "2010-10-10",
+                "address": "chobhar, kirtipur, Kathmandu",
+                "password": "helloworld",
+                "class_number": "10"
+            }
+            // const redirection = (<Redirect to="/managestudents" />)
+            const fetchstudentpost = fetch ("http://127.0.0.1:8000/adminsite/studentregister/", 
+            {
+                method: 'POST', 
+                body:JSON.stringify(datas), 
+                headers:{ 
+                    "Content-Type": "application/json"
+                 }
+            })
+            .then(res => res.json())
+            .then(() => window.location="/managestudent");
+            // .then(redirection)
+                      
+            console.log(daat)
+            
+    }
+
+
   return (
     <div className="container container-fluid">
       <Form>
-        <FormGroup>
-          <Label for="Name">First Name</Label>
-          <Input
-            type="email"
-            name="email"
-            id="exampleEmail"
-            placeholder="with a placeholder"/>
-        </FormGroup>
-        <FormGroup>
-          <Label for="Name">First Name</Label>
-          <Input
-            type="email"
-            name="email"
-            id="exampleEmail"
-            placeholder="with a placeholder"/>
-        </FormGroup>
-        <FormGroup>
-          <Label for="Name">First Name</Label>
-          <Input
-            type="email"
-            name="email"
-            id="exampleEmail"
-            placeholder="with a placeholder"/>
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleEmail">Email</Label>
-          <Input
-            type="email"
-            name="email"
-            id="exampleEmail"
-            placeholder="with a placeholder"/>
-        </FormGroup>
-        <FormGroup>
-          <Label for="examplePassword">Password</Label>
-          <Input
-            type="password"
-            name="password"
-            id="examplePassword"
-            placeholder="password placeholder"/>
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleSelect">Select</Label>
-          <Input type="select" name="select" id="exampleSelect">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Input>
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleSelectMulti">Select Multiple</Label>
-          <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Input>
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleText">Text Area</Label>
-          <Input type="textarea" name="text" id="exampleText"/>
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleFile">File</Label>
-          <Input type="file" name="file" id="exampleFile"/>
-          <FormText color="muted">
-            This is some placeholder block-level help text for the above input. It's a bit
-            lighter and easily wraps to a new line.
-          </FormText>
-        </FormGroup>
-        <FormGroup tag="fieldset">
-          <legend>Radio Buttons</legend>
-          <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio1"/>{' '}
-              Option one is this and that—be sure to include why it's great
-            </Label>
+        <div className='row text-left'>
+          <FormGroup className="col-sm-4">
+            <Label for="exampleEmail">First Name</Label>
+            <Input
+              type="text"
+              name="first_name"
+              id="first_name"
+              onChange={handleChange}
+              placeholder="First Name"/>
           </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio1"/>{' '}
-              Option two can be something else and selecting it will deselect option one
-            </Label>
+
+          <FormGroup className="col-sm-4">
+            <Label for="exampleEmail">Middle Name</Label>
+            <Input
+              type="text"
+              name="middle_name"
+              id="middle_name"
+              onChange={handleChange}
+              placeholder="Middle Name"/>
           </FormGroup>
-          <FormGroup check disabled>
-            <Label check>
-              <Input type="radio" name="radio1" disabled/>{' '}
-              Option three is disabled
-            </Label>
+
+          <FormGroup className="col-sm-4">
+            <Label for="exampleEmail">Last Name</Label>
+            <Input
+              type="text"
+              name="last_name"
+              id="last_name"
+              onChange={handleChange}
+              placeholder="
+              Last Name"/>
           </FormGroup>
+        </div>
+      {/* second line */}
+        <div className='row text-left'>
+          <FormGroup className="col-sm-4">
+            <Label for="exampleEmail">Email</Label>
+            <Input
+              type="email"
+              name="email"
+              id="email"
+              onChange={handleChange}
+              placeholder="Email"/>
+          </FormGroup>
+
+          <FormGroup className="col-sm-4">
+            <Label for="exampleEmail">Address</Label>
+            <Input
+              type="text"
+              name="address"
+              id="address"
+              onChange={handleChange}
+              placeholder="Address"/>
+          </FormGroup>
+
+          <FormGroup className="col-sm-4">
+            <Label for="exampleEmail">Date of Birth</Label>
+            <Input
+              type="date"
+              name="date_of_birth"
+              id="date_of_birth"
+              onChange={handleChange}
+              placeholder="
+              Date of Birth"/>
+          </FormGroup>
+        </div>
+        {/* third line */}
+
+        <div className='row text-left'>
+          <FormGroup className="col-sm-4">
+            <Label for="exampleEmail">Admission Number</Label>
+            <Input
+              type="number"
+              name="admission_number"
+              id="admission_number"
+              onChange={handleChange}
+              placeholder="Admission Number"/>
+          </FormGroup>
+
+          <FormGroup className="col-sm-4">
+            <Label for="exampleEmail">Parents Number</Label>
+            <Input
+              type="text"
+              name="parents_number"
+              id="parents_number"
+              onChange={handleChange}
+              placeholder="Parents Number"/>
+          </FormGroup>
+
+          <FormGroup className="col-sm-4">
+          <Label for="exampleEmail">Class Number</Label>
+            <Input
+              type="number"
+              name="class_number"
+              id="class_number"
+              onChange={handleChange}
+              placeholder="Class Number"/>
+
+          </FormGroup>
+        </div>
+        {/* fourth line */}
+        <div className='row text-left'>
+          <FormGroup className="col-sm-4">
+            <Label for="exampleEmail">Password</Label>
+            <Input
+              type="password"
+              name="password"
+              id="password"
+              onChange={handleChange}
+              placeholder="Password"/>
+          </FormGroup>
+
+          <FormGroup tag="fieldset" className="col-sm-4">
+        <legend>Gender</legend>
+        <FormGroup check>
+          <Label check>
+            <Input type="radio"  onChange={handleChange} name="gender" value="M" />{'Male'}
+          </Label>
         </FormGroup>
         <FormGroup check>
           <Label check>
-            <Input type="checkbox"/>{' '}
-            Check me out
+            <Input type="radio"  onChange={handleChange} name="gender" value = "F" />{'Female'}
           </Label>
         </FormGroup>
-        <Button>Submit</Button>
+      </FormGroup>
+{/* radio buttons */}
+       
+          <FormGroup className="col-sm-4" onChange={handleChange}>
+          
+            <Label for="exampleEmail">Upload Picture</Label>
+            <Input
+              type="file"
+              name="profile_picture"
+              id="profile_picture"
+              />
+          </FormGroup>
+        </div>
+        <Button className="float-left" color="primary" onClick={handleSubmit}>Submit</Button>
       </Form>
     </div>
   );

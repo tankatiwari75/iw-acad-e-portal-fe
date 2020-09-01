@@ -1,25 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { FaPlus, FaTrash, FaMinus, FaInfo } from 'react-icons/fa';
+// import css
+import "./notice.css"
 
-const Notice = () => {
-return (
-    <div>
-<div className="alert alert-success" role="alert">
-    <h4 className="alert-heading">Well done!</h4>
-    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so
-        that you can see how spacing within an alert works with this kind of content.</p>
-    <hr />
-    <p className="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-</div>
-<hr/>
-<div className="alert alert-success" role="alert">
-    <h4 className="alert-heading">Well done!</h4>
-    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so
-        that you can see how spacing within an alert works with this kind of content.</p>
-    <hr />
-    <p className="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-</div>
-</div>
-);
-};
+// react-router-dom
+import {
+    Link
+} from "react-router-dom";
+
+
+import {
+
+} from "reactstrap"
+function Notice(props) {
+    
+
+    const [data,
+        setData] = useState([]);
+
+    const fetchData = async () => {
+        const fetchedData = await fetch("http://127.0.0.1:8000/adminsite/noticeboard/");
+        const jsonFetchedData = await fetchedData.json();
+        // console.log(jsonFetchedData);
+        setData(jsonFetchedData);
+        console.log(data)
+    }
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    return (
+        <div className="maincontent">
+                <div className="conatiner noticebody">
+                {data.map(notice => (
+                    <div className="notices">
+                        <div className="row">
+                            <div className="title col-sm-6">
+                                <h4 style={{ textAlign: "left" }}><strong>{notice.notice_title}</strong></h4>
+                            </div>
+                        </div>
+                        <p className="description">{notice.notice_description}</p>
+                        <p className="created">-{notice.created_by}</p>
+
+                        <hr ></hr>
+                    </div>
+                ))}
+
+                {/* <div className="col-sm">Recent Activity</div> */}
+            </div>
+                {/* <div className="col-sm">Recent Activity</div> */}
+                </div>
+    );
+}
 
 export default Notice;

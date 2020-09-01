@@ -4,6 +4,7 @@ import "./navigationbar.css"
 
 // React-router-dom
 import {Link} from "react-router-dom";
+import mainLogo from'./logo.png';
 
 import {
   Collapse,
@@ -28,8 +29,8 @@ const Navigationbar = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/"><span className='display-5'>E-Portal</span></NavbarBrand>
-        <NavbarToggler onClick={toggle}/>
+      <NavbarBrand href="/"><span className='display-5'><img  src={mainLogo} alt="E|Portal System"/></span></NavbarBrand>
+        <NavbarToggler onClick={toggle}/> 
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>

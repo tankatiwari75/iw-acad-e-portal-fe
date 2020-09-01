@@ -1,33 +1,74 @@
-import React from 'react';
-import {FaPlus, FaTrash, FaMinus, FaInfo} from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaPlus, FaTrash, FaMinus, FaRegEdit } from 'react-icons/fa';
 // import css
 import "./managenotice.css"
 
 // react-router-dom
 import {
     Link
-  } from "react-router-dom";
+} from "react-router-dom";
 
 
 import {
-
+    Button
 } from "reactstrap"
-function ManageNotice(props) {
-return (
-<div className="maincontent">
-   <div className="container">
-       <div className="row">
-       <Link className="col-sm box btn-ripple nounderline" to='/add-notice'><FaPlus className='icons text-danger'/><h5 className="text-danger">Add</h5></Link>
-       <Link className="col-sm box btn-ripple nounderline" to='/edit-notice'><FaMinus className='icons text-danger'/><h5 className="text-danger">Edit</h5></Link>
-       <Link className="col-sm box btn-ripple nounderline" to='/delete-notice'><FaTrash className='icons text-danger'/><h5 className="text-danger">Remove</h5></Link>
-       <Link className="col-sm box btn-ripple nounderline" to='/view-notice-detail'><FaInfo className='icons text-danger'/><h5 className="text-danger">View Detail</h5></Link>
-       
-           
-           {/* <div className="col-sm">Recent Activity</div> */}
-       </div>
-   </div>
-</div>
-);
+
+
+function ManageNotice({ match }) {
+
+    // const [studentdata, setStudentdata] = useState([]);
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    let sn = 1;
+
+    const [data,
+        setData] = useState([]);
+
+    const fetchData = async () => {
+        const fetchedData = await fetch("http://127.0.0.1:8000/adminsite/noticeboard/");
+        const jsonFetchedData = await fetchedData.json();
+        // console.log(jsonFetchedData);
+        setData(jsonFetchedData);
+        console.log(data)
+    }
+    return (
+        <div className="maincontent">
+            <div className="conatiner main">
+                <Link to={`${match.url}/add-notice`}>
+                    <Button color='primary'>Add Notice &nbsp;
+                    <FaPlus className='text-light' /></Button>
+                </Link>
+            </div>
+            <div className="conatiner noticebody">
+                {data.map(notice => (
+                    <div className="notices">
+                        <div className="row">
+                            <div className="title col-sm-6">
+                                <h4 style={{ textAlign: "left" }}><strong>{notice.notice_title}</strong></h4>
+                            </div>
+                            <div className="links col-sm-6">
+                                <Link to={`${match.url}/update-notice/${notice.id}`} className='col-sm'>
+                                    <FaRegEdit className='extraicon icons text-danger' title="Edit" />
+                                </Link>
+                                <Link to={`${match.url}/delete-notice/${notice.id}`} className='col-sm'>
+                                    <FaTrash className='extraicon icons text-danger' title="Delete" />
+                                </Link>
+                            </div>
+                        </div>
+                        <p className="description">{notice.notice_description}</p>
+                        <p className="created">-{notice.created_by}</p>
+
+                        <hr ></hr>
+                    </div>
+                ))}
+
+                {/* <div className="col-sm">Recent Activity</div> */}
+            </div>
+        </div >
+    );
 }
 
-export default ManageNotice
+export default ManageNotice;

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
-const DeleteStudent = ({match}) => {
+const DeleteNotice = ({match}) => {
     // const [del, setDel] = useState(false);
-    const deleteStudentFunction = async() =>{
-       const fetchdeletedata = await fetch(`http://127.0.0.1:8000/adminsite/studentregister/${match.params.id}`,{method: 'DELETE'})
-       .then(() => window.location="/managestudent");
+    const deleteNoticeFunction = async() =>{
+       const fetchdeletedata = await fetch(`http://127.0.0.1:8000/adminsite/noticeboard/${match.params.id}`,{method: 'DELETE'})
+       .then(() => window.location="/managenotice");
     //    setDel = true
     }
     useEffect(() => {
-        deleteStudentFunction();
+        deleteNoticeFunction();
       }, [])
 
     // const checkDel = () => del ? <Redirect to = "/managestudent" /> : <h1>Data not deleted</h1>
@@ -23,4 +23,4 @@ const DeleteStudent = ({match}) => {
     );
 };
 
-export default DeleteStudent;
+export default DeleteNotice;
