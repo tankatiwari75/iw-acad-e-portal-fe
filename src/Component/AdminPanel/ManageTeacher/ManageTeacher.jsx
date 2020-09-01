@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {FaPlus, FaTrash, FaMinus, FaEdit,FaInfo} from 'react-icons/fa';
+import {FaPlus, FaTrash, FaMinus, FaEdit,FaInfo, FaUser } from 'react-icons/fa';
+
+
 // import css
 import "./manageteacher.css"
 
@@ -44,16 +46,18 @@ function ManageTeacher({match}) {
     <div className="maincontent">
       <div className="container">
         <div className="row">
-          <Link to={`${match.url}/add-teacher`}>
-            <Button color='primary'>Add Teacher &nbsp;
-            <FaPlus className='text-light'/></Button>
-          </Link>
+          {/*<Link to={`${match.url}/add-teacher`}>*/}
+          {/*  <Button color='primary'>Add Teacher &nbsp;*/}
+          {/*  <FaPlus className='text-light'/></Button>*/}
+          {/*</Link>*/}
 
 
-          {/* <Link className="col-sm box btn-ripple nounderline" to='/add-student'><FaPlus className='icons text-danger'/><h5 className="text-danger">Add Student</h5></Link> */}
-          {/* <Link className="col-sm box btn-ripple nounderline" to='/edit-student'><FaMinus className='icons text-danger'/><h5 className="text-danger">Edit</h5></Link> */}
-          {/* <Link className="col-sm box btn-ripple nounderline" to='/remove-student'><FaTrash className='icons text-danger'/><h5 className="text-danger">Remove</h5></Link> */}
-          {/* <Link className="col-sm box btn-ripple nounderline" to='/view-student-detail'><FaInfo className='icons text-danger'/><h5 className="text-danger">View Detail</h5></Link> */}
+            <Link className="col-sm box btn-ripple nounderline" to={`${match.url}/add-teacher`}><FaPlus className='icons text-danger'/><h5 className="text-danger">Add</h5></Link>
+            <Link className="col-sm box btn-ripple nounderline" to={`${match.url}/edit-teacher`}><FaMinus className='icons text-danger'/><h5 className="text-danger">Edit</h5></Link>
+            <Link className="col-sm box btn-ripple nounderline" to={`${match.url}/delete-teacher`}><FaTrash className='icons text-danger'/><h5 className="text-danger">Remove</h5></Link>
+            <Link className="col-sm box btn-ripple nounderline" to={`${match.url}/role-assign-teacher`}><FaUser className='icons text-danger'/><h5 className="text-danger">Role Assign</h5></Link>
+            <Link className="col-sm box btn-ripple nounderline" to={`${match.url}/view-teacher-detail`}><FaInfo className='icons text-danger'/><h5 className="text-danger">View Detail</h5></Link>
+
           <Table bordered>
             <thead>
               <tr>
@@ -103,25 +107,5 @@ function ManageTeacher({match}) {
 export default ManageTeacher
 
 
-
-
-
-// function ManageTeacher(props) {
-// return (
-// <div className="maincontent">
-//    <div className="container">
-//        <div className="row">
-//        <Link className="col-sm box btn-ripple nounderline" to='/add-teacher'><FaPlus className='icons text-danger'/><h5 className="text-danger">Add</h5></Link>
-//        <Link className="col-sm box btn-ripple nounderline" to='/edit-teacher'><FaMinus className='icons text-danger'/><h5 className="text-danger">Edit</h5></Link>
-//        <Link className="col-sm box btn-ripple nounderline" to='/delete-teacher'><FaTrash className='icons text-danger'/><h5 className="text-danger">Remove</h5></Link>
-//        <Link className="col-sm box btn-ripple nounderline" to='/view-teacher-detail'><FaInfo className='icons text-danger'/><h5 className="text-danger">View Detail</h5></Link>
-//
-//
-//            {/* <div className="col-sm">Recent Activity</div> */}
-//        </div>
-//    </div>
-// </div>
-// );
-// }
 
 

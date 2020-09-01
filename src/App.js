@@ -22,15 +22,21 @@ import Login from "./Component/Login/Login"
  import AdminPanel from "./Component/AdminPanel/AdminPanel"
  import Managestudent from "./Component/AdminPanel/Managestudent/Managestudent"
 
-import ManageTeacher from './Component/AdminPanel/ManageTeacher/ManageTeacher';
+
 import ManageClass from './Component/AdminPanel/ManageClass/ManageClass';
 import ManageSubject from './Component/AdminPanel/ManageSubject/ManageSubject';
 import ManageNotice from './Component/AdminPanel/ManageNotice/ManageNotice';
 import AddStudent from "./Component/AdminPanel/Managestudent/AddStudent/AddStudent"
 import StudentDetail from './Component/AdminPanel/Managestudent/StudentDetail/StudentDetail';
+
+//for teacher crud
+import ManageTeacher from './Component/AdminPanel/ManageTeacher/ManageTeacher';
 import AddTeacher from "./Component/AdminPanel/ManageTeacher/AddTeacher/AddTeacher";
+import EditTeacher from "./Component/AdminPanel/ManageTeacher/EditTeacher/EditTeacher";
 import DeleteTeacher from "./Component/AdminPanel/ManageTeacher/DeleteTeacher/DeleteTeacher";
 import TeacherDetail from './Component/AdminPanel/ManageTeacher/TeacherDetail/TeacherDetail';
+
+import RoleAssignTeacher from "./Component/AdminPanel/ManageTeacher/RoleAssignTeacher/roleassignteacher";
 
 
 //import teacher views
@@ -41,11 +47,12 @@ import DeleteStudent from './Component/AdminPanel/Managestudent/DeleteStudent/De
 
 
 
+
 // imported Profile
 const login = true;
-const  student = false;
+const  student = true;
 const teacher = false;
-const admin = true;
+const admin = false;
 
 function App() {
   if (login && student){
@@ -77,11 +84,18 @@ function App() {
           <Navigation/>
           <Breadcrumber titlename = "Rajeet"/>
           <Route path="/" exact component={AdminPanel} />
-          <Route path="/managestudent" exact component={Managestudent} /> 
+          <Route path="/managestudent" exact component={Managestudent} />
+
+
           <Route path="/manageteacher" component={ManageTeacher} />
           <Route path="/manageteacher/add-teacher" component={AddTeacher} />
+          <Route path="/manageteacher/edit-teacher" component={EditTeacher} />
+          <Route path="/manageteacher/role-assign-teacher" component={RoleAssignTeacher} />
+
           <Route path="/manageteacher/delete-teacher" component={DeleteTeacher} />
           <Route path="/manageteacher/view-teacher-detail/:id" component={TeacherDetail} />
+
+
           <Route path="/manageclassroom" component={ManageClass} /> 
           <Route path="/managesubject" component={ManageSubject} /> 
           <Route path="/managenotice" component={ManageNotice} />
