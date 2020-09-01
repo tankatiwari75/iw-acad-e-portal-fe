@@ -18,9 +18,10 @@ import Schedule from './Component/StudentPanel/Schedule/Schedule';
 import Logout from "./Component/Logout/Logout"
 import Login from "./Component/Login/Login"
 
+
 // import admin views
- import AdminPanel from "./Component/AdminPanel/AdminPanel"
- import Managestudent from "./Component/AdminPanel/Managestudent/Managestudent"
+import AdminPanel from "./Component/AdminPanel/AdminPanel"
+import Managestudent from "./Component/AdminPanel/Managestudent/Managestudent"
 
 import ManageTeacher from './Component/AdminPanel/ManageTeacher/ManageTeacher';
 import ManageClass from './Component/AdminPanel/ManageClass/ManageClass';
@@ -28,13 +29,20 @@ import ManageSubject from './Component/AdminPanel/ManageSubject/ManageSubject';
 import ManageNotice from './Component/AdminPanel/ManageNotice/ManageNotice';
 import AddStudent from "./Component/AdminPanel/Managestudent/AddStudent/AddStudent"
 import StudentDetail from './Component/AdminPanel/Managestudent/StudentDetail/StudentDetail';
+import AddSubject from "./Component/AdminPanel/ManageSubject/AddSubject/AddSubject";
+import EditSubject from "./Component/AdminPanel/ManageSubject/EditSubject/EditSubject";
+import DeleteSubject from "./Component/AdminPanel/ManageSubject/DeleteSubject/DeleteSubject";
+import SubjectDetail from "./Component/AdminPanel/ManageSubject/SubjectDetail/SubjectDetail";
+import AddClass from "./Component/AdminPanel/ManageClass/AddClass/AddClass";
+import DeleteClass from "./Component/AdminPanel/ManageClass/DeleteClass/DeleteClass";  
+
 
 
 //import teacher views
 import TeacherPanel from "./Component/Teacher/TeacherPanel"
 import TeacherNotice from "./Component/Teacher/TeacherNotice/TeacherNotice"
 import DeleteStudent from './Component/AdminPanel/Managestudent/DeleteStudent/DeleteStudent';
-
+import Footer from './Component/Footer/footer';
 
 
 
@@ -79,12 +87,18 @@ function App() {
           <Route path="/manageclassroom" component={ManageClass} /> 
           <Route path="/managesubject" component={ManageSubject} /> 
           <Route path="/managenotice" component={ManageNotice} />
-          <Route path="/managestudent/add-student" component = {AddStudent} /> 
+          <Route path="/managestudent/add-student" component = {AddStudent} />
           <Route path="/managestudent/view-student-detail/:id" component = {StudentDetail} /> 
           <Route path="/managestudent/delete-student/:id" component = {DeleteStudent} /> 
+          <Route path="/add-subject" component = {AddSubject} /> 
+          <Route path="/edit-subject" component = {EditSubject} /> 
+          <Route path="/delete-subject" component = {DeleteSubject} />
+          <Route path="/view-subject-detail" component = {SubjectDetail} /> 
+          <Route path="/add-class" component = {AddClass} /> 
+          <Route path="/delete-class" component = {DeleteClass} /> 
 
           <Route path='/calendar' component={Calendar} />
-          <Route path='/logout' component={Logout}/>
+          <Route path='/logout' component={Logout}/> 
 
 
 
@@ -111,13 +125,15 @@ function App() {
       </Router>
       )
   }
+  
   else{
+    
     return (
       <div>
         <Login />
       </div>
       )
   }
-}
+} 
 
 export default App;

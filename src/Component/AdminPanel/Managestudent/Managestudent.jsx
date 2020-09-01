@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 
 import {Table, Button} from "reactstrap"
 
-function Managestudent({match}) {
+function Managestudent({match}) { 
 
   // const [studentdata, setStudentdata] = useState([]);
 
@@ -29,15 +29,14 @@ function Managestudent({match}) {
     console.log(data)
   }
 
-
-  return (
+return (
     <div className="maincontent">
       <div className="container">
         <div className="row">
           <Link to={`${match.url}/add-student`}>
             <Button color='primary'>Add Student &nbsp;
             <FaPlus className='text-light'/></Button>
-          </Link>
+          </Link> 
           
             
           {/* <Link className="col-sm box btn-ripple nounderline" to='/add-student'><FaPlus className='icons text-danger'/><h5 className="text-danger">Add Student</h5></Link> */}
