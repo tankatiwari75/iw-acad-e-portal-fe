@@ -1,0 +1,31 @@
+.main{
+    text-align: right;
+    padding-right: 100px;
+}
+.noticebody{
+    margin:10px 20px 0 20px;
+    border:8px solid;
+    text-align: left;
+    border-color: aquamarine;
+
+}
+.notices{
+    padding:10px 30px 10px 30px;
+    height:220px;
+    overflow-y: scroll;
+}
+.links{
+    text-align: right;
+}
+.extraicon{
+    height:20px;
+    width:30px;
+
+}
+.description{
+    padding: 5px 20px 5px 20px;
+}
+.created{
+    text-align: right;
+    padding-right: 50px;
+}

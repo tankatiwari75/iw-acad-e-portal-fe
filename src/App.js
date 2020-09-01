@@ -9,7 +9,7 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 // react-router-dom imported
 // import profile, calendar
 import Profile from "./Component/NavbarContent/Profile/Profile"
-import Calendar from "./Component/NavbarContent/Calendar/Calendar"
+import CalenderDetails from "./Component/NavbarContent/Calendar/Calendar"
 import Notice from './Component/StudentPanel/Notice/Notice';
 import Attendance from './Component/StudentPanel/Attendance/Attendance';
 import Result from './Component/StudentPanel/Result/Result';
@@ -26,6 +26,10 @@ import Managestudent from "./Component/AdminPanel/Managestudent/Managestudent"
 import ManageTeacher from './Component/AdminPanel/ManageTeacher/ManageTeacher';
 import ManageClass from './Component/AdminPanel/ManageClass/ManageClass';
 import ManageSubject from './Component/AdminPanel/ManageSubject/ManageSubject';
+import AddNotice from './Component/AdminPanel/ManageNotice/AddNotice/AddNotice';
+import DeleteNotice from './Component/AdminPanel/ManageNotice/DeleteNotice/DeleteNotice';
+import UpdateNotice from './Component/AdminPanel/ManageNotice/UpdateNotice/UpdateNotice';
+
 import ManageNotice from './Component/AdminPanel/ManageNotice/ManageNotice';
 import AddStudent from "./Component/AdminPanel/Managestudent/AddStudent/AddStudent"
 import StudentDetail from './Component/AdminPanel/Managestudent/StudentDetail/StudentDetail';
@@ -43,12 +47,11 @@ import TeacherPanel from "./Component/Teacher/TeacherPanel"
 import TeacherNotice from "./Component/Teacher/TeacherNotice/TeacherNotice"
 import DeleteStudent from './Component/AdminPanel/Managestudent/DeleteStudent/DeleteStudent';
 import Footer from './Component/Footer/footer';
-
-
+import TeacherAttendance from "./Component/Teacher/TeacherAttendance/TeacherAttendance"
 
 // imported Profile
 const login = true;
-const  student = false;
+const  student = true;
 const teacher = false;
 const admin = true;
 
@@ -61,7 +64,7 @@ function App() {
         <Breadcrumber titlename = "Rajeet"/>
         <Route path="/" exact component={StudentPanel} />
         <Route path="/Profile" component={Profile} /> 
-        <Route path='/calendar' component={Calendar} />
+        <Route path='/calendar' component={CalenderDetails} />
         <Route path='/notice' component={Notice}/>
         <Route path='/attendance' component={Attendance}/>
         <Route path='/result' component={Result}/>
@@ -86,6 +89,7 @@ function App() {
           <Route path="/manageteacher" component={ManageTeacher} /> 
           <Route path="/manageclassroom" component={ManageClass} /> 
           <Route path="/managesubject" component={ManageSubject} /> 
+<<<<<<< HEAD
           <Route path="/managenotice" component={ManageNotice} />
           <Route path="/managestudent/add-student" component = {AddStudent} />
           <Route path="/managestudent/view-student-detail/:id" component = {StudentDetail} /> 
@@ -99,6 +103,14 @@ function App() {
 
           <Route path='/calendar' component={Calendar} />
           <Route path='/logout' component={Logout}/> 
+=======
+          <Route path="/managenotice" exact component={ManageNotice} /> 
+          <Route path="/managenotice/add-notice" component={AddNotice}/>
+          <Route path="/managenotice/delete-notice/:id" component={DeleteNotice}/>
+          <Route path="/managenotice/update-notice/:id" component={UpdateNotice}/>
+          <Route path='/calendar' component={CalenderDetails} />
+          <Route path='/logout' component={Logout}/>
+>>>>>>> tankaedit
 
 
 
@@ -112,10 +124,11 @@ function App() {
           <Navigation/>
           <Breadcrumber titlename = "Rajeet"/>
           <Route path="/" exact component={TeacherPanel} />
-          <Route path="/notice" component={TeacherNotice} /> 
+          <Route path="/notice" component={TeacherNotice} />
+          <Route path="/attendance-upload" component={TeacherAttendance} />  
 
 
-          <Route path='/calendar' component={Calendar} />
+          <Route path='/calendar' component={CalenderDetails} />
           <Route path='/logout' component={Logout}/>
 
          
