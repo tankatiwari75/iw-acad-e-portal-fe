@@ -31,21 +31,23 @@ function Schedule(props) {
 
             {/*<Link className="col-sm box btn-ripple nounderline" to={`${match.url}/edit-teacher`}><h5 className="text-danger">Class 1</h5></Link>*/}
              <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 1</h5></Link>
-             <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 1</h5></Link>
-             <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 1</h5></Link>
-            <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 1</h5></Link>
-             <PDFViewer />
+             <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 2</h5></Link>
+             <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 3</h5></Link>
+            <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 4</h5></Link>
+            <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 5</h5></Link>
+
 
         </div>
 
       </div>
            <div className="container">
                <div className="row">
-               <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 1</h5></Link>
-               <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 1</h5></Link>
-               <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 1</h5></Link>
-               <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 1</h5></Link>
-               <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 1</h5></Link>
+
+               <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 6</h5></Link>
+               <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 7</h5></Link>
+               <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 8</h5></Link>
+               <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 9</h5></Link>
+                   <Link className="col-sm box btn-ripple nounderline" ><h5 className="text-danger">Class 10</h5></Link>
 
 
 </div>
