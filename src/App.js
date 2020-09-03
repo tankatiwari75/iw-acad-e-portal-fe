@@ -42,8 +42,8 @@ import TeacherAttendance from "./Component/Teacher/TeacherAttendance/TeacherAtte
 
 // imported Profile
 const login = true;
-const  student = true;
-const teacher = false;
+const  student = false;
+const teacher = true;
 const admin = false;
 
 function App() {

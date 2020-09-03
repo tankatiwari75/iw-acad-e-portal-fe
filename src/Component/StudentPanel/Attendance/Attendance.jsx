@@ -26,8 +26,8 @@ const Attendance = (props) => {
                         <th>Student ID</th>
                         <th>Teacher ID</th>
                         <th>Subject Name</th>
-                        <th>Marks Obtained</th>
-                        <th>Result Status</th>
+                        <th>Class Present</th>
+                        <th>Class Held</th>
                     </tr>
                 </thead>
                 <tbody>
