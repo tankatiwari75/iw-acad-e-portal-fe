@@ -15,6 +15,7 @@ import Attendance from './Component/StudentPanel/Attendance/Attendance';
 import Result from './Component/StudentPanel/Result/Result';
 import Timetable from './Component/StudentPanel/Timetable/Timetable';
 import Schedule from './Component/StudentPanel/Schedule/Schedule';
+import Syllabus from './Component/StudentPanel/Syllabus/Syllabus';
 import Logout from "./Component/Logout/Logout"
 import Login from "./Component/Login/Login"
 
@@ -48,9 +49,9 @@ import Footer from './Component/Footer/footer';
 
 // imported Profile
 const login = true;
-const  student = false;
+const  student = true;
 const teacher = false;
-const admin = true;
+const admin = false; 
 
 function App() {
   if (login && student){
@@ -67,6 +68,7 @@ function App() {
         <Route path='/result' component={Result}/>
         <Route path='/time-table' component={Timetable}/>
         <Route path='/schedule' component={Schedule}/>
+        <Route path='/syllabus' component={Syllabus}/> 
         <Route path='/logout' component={Logout}/>
         {/* This is for message */}
         {/* <Route path='/schedule' component={Schedule}/> */}
