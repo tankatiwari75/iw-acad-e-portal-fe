@@ -62,7 +62,7 @@ const AddStudent = (props) => {
     const handleSubmit = () => {
         const daat = {
           "student_user": {
-            "username": "stu_" + studentData['username'],
+            "username": "stu." + studentData['username'],
             "first_name": studentData['first_name'],
             "middle_name": studentData['middle_name'],
             "last_name": studentData['last_name'],
@@ -72,34 +72,26 @@ const AddStudent = (props) => {
         "profile_picture": datas['profile_picture'],
         "admission_number": datas['admission_number'],
         "class_number": datas['class_number'],
-        "age": datas['age'],
+          "age": datas['age'],
         "gender": datas['gender'],
         "parents_number": datas['parents_number'],
         "date_of_birth": datas['date_of_birth'],
         "address": datas['address']
             }
-            setDaata(daat)
-            console.log(daata)
+            console.log(daat)
             // const redirection = (<Redirect to="/managestudents" />)
             const fetchstudentpost = fetch("http://127.0.0.1:8000/adminsite/studentregister/", 
-            // {
-            //     method: 'POST', 
-            //     body:JSON.stringify(daata), 
-            //     headers:{ 
-            //         "Authorization": `Token `,
-            //         "Content-Type": "application/json"
-            //      }
-            // },
+      
             {
               method: 'POST',
               headers: {
                "Authorization": `Token d75980bc78c52c2a5e21e440eed92cefbc713699`,
                "Content-Type": "application/json"
              },
-             body:JSON.stringify(daata), 
+             body:JSON.stringify(daat), 
            })
-            // .then(res => console.log(res.json()))
-            // .then(() => window.location="/managestudent");
+            .then(res => console.log(res.json()))
+            .then(() => window.location="/managestudent");
             
             
     }
@@ -220,12 +212,21 @@ const AddStudent = (props) => {
         </div>
         {/* fourth line */}
         <div className='row text-left'>
-          <FormGroup className="col-sm-4">
-            <Label for="exampleEmail">Password</Label>
+        <FormGroup className="col-sm-4">
+            <Label for="password">Password</Label>
             <Input
               type="password"
               name="password"
               id="password"
+              onChange={handleChange}
+              placeholder="Password"/>
+          </FormGroup>
+          <FormGroup className="col-sm-4">
+            <Label for="age">Age</Label>
+            <Input
+              type="number"
+              name="age"
+              id="age"
               onChange={handleChange}
               placeholder="Password"/>
           </FormGroup>
