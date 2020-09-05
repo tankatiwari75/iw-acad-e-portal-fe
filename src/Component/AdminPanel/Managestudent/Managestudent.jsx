@@ -58,6 +58,7 @@ return (
                 <th>Name</th>
                 <th>Class</th>
                 <th>Address</th>
+                <th>Admission number</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -76,6 +77,8 @@ return (
                   <td>{student.first_name + "  " + student.middle_name + " " + student.last_name}</td>
                   <td>{student.class_number}</td>
                   <td>{student.address}</td>
+                  <td>{student.admission_number}</td>
+
                   <td>
                     <Link to={`${match.url}/view-student-detail/${student.id}`} className='col-sm'>
                       <FaInfo className='text-success'/>

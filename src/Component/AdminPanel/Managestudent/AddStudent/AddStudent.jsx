@@ -10,6 +10,7 @@ import {
 import { Redirect } from 'react-router-dom';
 
 const AddStudent = (props) => {
+  console.log(localStorage.getItem('token'))
   const [daata, setDaata] = useState({})
   const [studentData, setStudentData] = useState({
           "username": "",
@@ -85,7 +86,7 @@ const AddStudent = (props) => {
             {
               method: 'POST',
               headers: {
-               "Authorization": `Token d75980bc78c52c2a5e21e440eed92cefbc713699`,
+               "Authorization": `Token ${localStorage.getItem('token')}`,
                "Content-Type": "application/json"
              },
              body:JSON.stringify(daat), 
