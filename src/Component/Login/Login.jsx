@@ -31,7 +31,18 @@ const Login = () => {
                 },
                 body: JSON.stringify(data),
             }).then(response => response.json())
-            .then(data => localStorage.setItem("token",data.token))
+            .then(function (data){
+              if (data.token){
+                localStorage.setItem("token", data.token);
+                console.log(data)
+                localStorage.setItem("username", data.username);
+              }
+              else{
+                localStorage.setItem("token", 0);
+                window.location = "/"
+                localStorage.setItem("username", 0);
+              }
+            })
             .then(session_data => localStorage.setItem("username", data.username))
             .then(logged_in => window.location = "/");
         }

@@ -64,7 +64,8 @@ const token = localStorage.getItem("token")
 function App() {
     console.log(username + token);
 
-  if (token && username.slice(0,4) =="stu_"){
+  if (token!=0 && username){
+    if(username.slice(0,4) =="stu."){
   return (
     <Router>
       <div className="App bg-light">
@@ -86,7 +87,7 @@ function App() {
     </Router>
     
   );}
-  else if (token && username.slice(0,4) !=="stu_" && username.slice(0,4) !== "tea_") {
+   else if (username.slice(0,4) !=="stu." && username.slice(0,4) !== "tea."){
     return (
       <Router>
         <div className="App bg-light">
@@ -124,7 +125,7 @@ function App() {
         </div>
       </Router>)
   }
-  else if (token && username.slice(0,4) =="tea_"){
+  else if (username.slice(0,4) =="tea."){
     return (
       <Router>
         <div className="App bg-light">
@@ -145,7 +146,7 @@ function App() {
         </div>
       </Router>
       )
-  }
+  }}
   
   else{
     
