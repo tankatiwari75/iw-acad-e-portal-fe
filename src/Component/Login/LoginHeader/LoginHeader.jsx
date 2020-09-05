@@ -15,28 +15,28 @@ const LoginHeader = () => {
   console.log(checkUserType)
 
   const adminlogin = (
-    <div>
+    <div className="container container-fluid">
       <Form>
         <Row form>
-          <Col md={3}>
+          <Col md={12}>
             <FormGroup>
-              <Label for="exampleEmail">Email</Label>
+              <Label for="username">Username</Label>
               <Input
-                type="email"
-                name="email"
-                id="exampleEmail"
-                placeholder="with a placeholder"/>
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Enter Username"/>
             </FormGroup>
           </Col>
         </Row>
         <Row>
-          <Col md={3}>
+          <Col md={12}>
             <FormGroup>
-              <Label for="examplePassword">Password</Label>
+              <Label for="password">Password</Label>
               <Input
                 type="password"
                 name="password"
-                id="examplePassword"
+                id="password"
                 placeholder="password placeholder"/>
             </FormGroup>
           </Col>
@@ -44,18 +44,11 @@ const LoginHeader = () => {
       </Form>
     </div>
   )
-  const loginfunction =() =>{
-      console.log("Logged in with ", checkUserType)
-  }
 
   return (
     <div align="center">
-      <Button color="danger" onClick={() => setCheckUserType("Admin")}>Admin Login</Button>
-      <Button color="success" onClick={() => setCheckUserType("Teacher")}>Teacher Login</Button>
-      <Button color="primary" onClick={() => setCheckUserType("Student")}>Student Login</Button>
-      <h1>{checkUserType + " Login"}</h1>
       {adminlogin}      
-      <Button color="warning" onClick={loginfunction}>Submit</Button>
+      <Button color="warning" onClick="handleLogin">Submit</Button>
     </div>
 
   );

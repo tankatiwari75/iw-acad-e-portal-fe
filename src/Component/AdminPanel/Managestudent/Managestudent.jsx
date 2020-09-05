@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FaPlus, FaEdit, FaMinus, FaInfo, FaTrash} from 'react-icons/fa';
+import {FaPlus, FaEdit, FaInfo, FaTrash} from 'react-icons/fa';
 // import css
 import "./managestudent.css"
 
@@ -22,7 +22,15 @@ function Managestudent({match}) {
     setData] = useState([]);
 
   const fetchData = async() => {
-    const fetchedData = await fetch("http://127.0.0.1:8000/adminsite/studentregister/");
+    const fetchedData = await fetch("http://127.0.0.1:8000/adminsite/studentregister/",
+    {
+      method: "GET",
+      headers: {
+        "Authorization": `Token d75980bc78c52c2a5e21e440eed92cefbc713699`,
+        "Content-Type": "application/json"
+      }
+    }
+    );
     const jsonFetchedData = await fetchedData.json();
     // console.log(jsonFetchedData);
     setData(jsonFetchedData);

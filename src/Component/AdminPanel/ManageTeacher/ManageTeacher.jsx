@@ -48,12 +48,6 @@ function ManageTeacher({match}) {
             <Button color='primary'>Add Teacher &nbsp;
             <FaPlus className='text-light'/></Button>
           </Link>
-
-
-          {/* <Link className="col-sm box btn-ripple nounderline" to='/add-student'><FaPlus className='icons text-danger'/><h5 className="text-danger">Add Student</h5></Link> */}
-          {/* <Link className="col-sm box btn-ripple nounderline" to='/edit-student'><FaMinus className='icons text-danger'/><h5 className="text-danger">Edit</h5></Link> */}
-          {/* <Link className="col-sm box btn-ripple nounderline" to='/remove-student'><FaTrash className='icons text-danger'/><h5 className="text-danger">Remove</h5></Link> */}
-          {/* <Link className="col-sm box btn-ripple nounderline" to='/view-student-detail'><FaInfo className='icons text-danger'/><h5 className="text-danger">View Detail</h5></Link> */}
           <Table bordered>
             <thead>
               <tr>

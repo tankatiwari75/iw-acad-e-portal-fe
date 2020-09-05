@@ -32,7 +32,7 @@ function ManageNotice({ match }) {
         const jsonFetchedData = await fetchedData.json();
         // console.log(jsonFetchedData);
         setData(jsonFetchedData);
-        console.log(data)
+        // console.log(data)
     }
     return (
         <div className="maincontent">
@@ -43,28 +43,29 @@ function ManageNotice({ match }) {
                 </Link>
             </div>
             <div className="conatiner noticebody">
-                {data.map(notice => (
                     <div className="notices">
-                        <div className="row">
-                            <div className="title col-sm-6">
-                                <h4 style={{ textAlign: "left" }}><strong>{notice.notice_title}</strong></h4>
-                            </div>
-                            <div className="links col-sm-6">
-                                <Link to={`${match.url}/update-notice/${notice.id}`} className='col-sm'>
-                                    <FaRegEdit className='extraicon icons text-danger' title="Edit" />
-                                </Link>
-                                <Link to={`${match.url}/delete-notice/${notice.id}`} className='col-sm'>
-                                    <FaTrash className='extraicon icons text-danger' title="Delete" />
-                                </Link>
-                            </div>
-                        </div>
-                        <p className="description">{notice.notice_description}</p>
+                        {data.map(notice => (
+                                 <div className="row">
+                                 <div className="title col-sm-6">
+                                     <h4 style={{ textAlign: "left" }}><strong>{notice.notice_title}</strong></h4>
+                                 </div>
+                                 <div className="links col-sm-6">
+                                     <Link to={`${match.url}/update-notice/${notice.id}`} className='col-sm'>
+                                         <FaRegEdit className='extraicon icons text-danger' title="Edit" />
+                                     </Link>
+                                     <Link to={`${match.url}/delete-notice/${notice.id}`} className='col-sm'>
+                                         <FaTrash className='extraicon icons text-danger' title="Delete" />
+                                     </Link>
+                                 </div>
+                                 <p className="description">{notice.notice_description}</p>
                         <p className="created">-{notice.created_by}</p>
+                             </div>
+                        ))}
+                       
+                        
 
                         <hr ></hr>
                     </div>
-                ))}
-
                 {/* <div className="col-sm">Recent Activity</div> */}
             </div>
         </div >

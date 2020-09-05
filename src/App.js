@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useEffect}from 'react';
 import './App.css';
 import Navigation from './Component/Navigationbar/navigationbar'
-import StudentPanel from './Component/NavbarContent/StudentPanel'
+import StudentPanel from './Component/StudentPanel/StudentPanel'
 import Breadcrumber from "./Component/Breadcrumb/Breadcrumber"
 
 // React-router-dom
@@ -30,6 +30,7 @@ import AddNotice from './Component/AdminPanel/ManageNotice/AddNotice/AddNotice';
 import DeleteNotice from './Component/AdminPanel/ManageNotice/DeleteNotice/DeleteNotice';
 import UpdateNotice from './Component/AdminPanel/ManageNotice/UpdateNotice/UpdateNotice';
 
+
 import ManageNotice from './Component/AdminPanel/ManageNotice/ManageNotice';
 import AddStudent from "./Component/AdminPanel/Managestudent/AddStudent/AddStudent"
 import StudentDetail from './Component/AdminPanel/Managestudent/StudentDetail/StudentDetail';
@@ -47,18 +48,23 @@ import DeleteClass from "./Component/AdminPanel/ManageClass/DeleteClass/DeleteCl
 //import teacher views
 import TeacherPanel from "./Component/Teacher/TeacherPanel"
 import TeacherNotice from "./Component/Teacher/TeacherNotice/TeacherNotice"
+import EditStudent from "./Component/AdminPanel/Managestudent/EditStudent/EditStudent"
 import DeleteStudent from './Component/AdminPanel/Managestudent/DeleteStudent/DeleteStudent';
 import Footer from './Component/Footer/footer';
 import TeacherAttendance from "./Component/Teacher/TeacherAttendance/TeacherAttendance"
+// import Manage from './Component/Teacher/DirectMessage/Manage';
+import Message from './Component/Teacher/DirectMessage/Message';
 
 // imported Profile
-const login = true;
-const  student = true;
-const teacher = false;
-const admin = true;
+const username = localStorage.getItem("username")
+const token = localStorage.getItem("token")
+
+
 
 function App() {
-  if (login && student){
+    console.log(username + token);
+
+  if (token && username.slice(0,4) =="stu_"){
   return (
     <Router>
       <div className="App bg-light">
@@ -80,7 +86,7 @@ function App() {
     </Router>
     
   );}
-  else if (login && admin) {
+  else if (token && username.slice(0,4) !=="stu_" && username.slice(0,4) !== "tea_") {
     return (
       <Router>
         <div className="App bg-light">
@@ -94,18 +100,17 @@ function App() {
           <Route path="/manageteacher/view-teacher-detail/:id" component={TeacherDetail} />
           <Route path="/manageclassroom" component={ManageClass} /> 
           <Route path="/managesubject" component={ManageSubject} /> 
-          // <Route path="/managenotice" component={ManageNotice} />
+          <Route path="/managenotice" component={ManageNotice} />
           <Route path="/managestudent/add-student" component = {AddStudent} />
           <Route path="/managestudent/view-student-detail/:id" component = {StudentDetail} /> 
           <Route path="/managestudent/delete-student/:id" component = {DeleteStudent} /> 
+          <Route path="/managestudent/edit-student/:id" component={EditStudent} />
           <Route path="/add-subject" component = {AddSubject} /> 
           <Route path="/edit-subject" component = {EditSubject} /> 
           <Route path="/delete-subject" component = {DeleteSubject} />
           <Route path="/view-subject-detail" component = {SubjectDetail} /> 
           <Route path="/add-class" component = {AddClass} /> 
           <Route path="/delete-class" component = {DeleteClass} /> 
-
-          <Route path='/calendar' component={Calendar} />
           <Route path='/logout' component={Logout}/> 
           <Route path="/managenotice" exact component={ManageNotice} /> 
           <Route path="/managenotice/add-notice" component={AddNotice}/>
@@ -119,7 +124,7 @@ function App() {
         </div>
       </Router>)
   }
-  else if (login && teacher){
+  else if (token && username.slice(0,4) =="tea_"){
     return (
       <Router>
         <div className="App bg-light">
@@ -128,6 +133,7 @@ function App() {
           <Route path="/" exact component={TeacherPanel} />
           <Route path="/notice" component={TeacherNotice} />
           <Route path="/attendance-upload" component={TeacherAttendance} />  
+          <Route path="/message" component={Message} />
 
 
           <Route path='/calendar' component={CalenderDetails} />
