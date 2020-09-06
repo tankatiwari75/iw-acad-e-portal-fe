@@ -95,9 +95,9 @@ function App() {
           <Breadcrumber titlename = "Rajeet"/>
           <Route path="/" exact component={AdminPanel} />
           <Route path="/managestudent" exact component={Managestudent} /> 
-          <Route path="/manageteacher" component={ManageTeacher} />
+          <Route path="/manageteacher" exact component={ManageTeacher} />
           <Route path="/manageteacher/add-teacher" component={AddTeacher} />
-          <Route path="/manageteacher/delete-teacher" component={DeleteTeacher} />
+          <Route path="/manageteacher/delete-teacher/:id" component={DeleteTeacher} />
           <Route path="/manageteacher/view-teacher-detail/:id" component={TeacherDetail} />
           <Route path="/manageclassroom" component={ManageClass} /> 
           <Route path="/managesubject" component={ManageSubject} /> 
