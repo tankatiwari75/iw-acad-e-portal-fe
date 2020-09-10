@@ -8,9 +8,12 @@
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.2",
     "react": "^16.13.1",
+    "react-calendar": "^3.1.0",
     "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
     "react-icons": "^3.10.0",
     "react-router-dom": "^5.2.0",
+    "react-script-tag": "^1.1.2",
     "react-scripts": "3.4.2",
     "reactstrap": "^8.5.1"
   },

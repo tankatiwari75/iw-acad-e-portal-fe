@@ -1,32 +1,57 @@
-import React from 'react';
-import {FaPlus, FaTrash, FaMinus, FaInfo} from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
+import { FaPlus, FaTrash, FaMinus, FaInfo } from 'react-icons/fa';
 // import css
 import "./teachernotice.css"
 
 // react-router-dom
 import {
     Link
-  } from "react-router-dom";
+} from "react-router-dom";
 
 
 import {
 
 } from "reactstrap"
 function TeacherNotice(props) {
-return (
-<div className="maincontent">
-   <div className="container">
-       <div className="row">
-       <Link className="col-sm box btn-ripple nounderline" to='/add-notice'><FaPlus className='icons text-danger'/><h5 className="text-danger">Add</h5></Link>
-       {/* <Link className="col-sm box btn-ripple nounderline" to='/edit-notice'><FaMinus className='icons text-danger'/><h5 className="text-danger">Edit</h5></Link> */}
-       <Link className="col-sm box btn-ripple nounderline" to='/view-notice-detail'><FaInfo className='icons text-danger'/><h5 className="text-danger">View Detail</h5></Link>
-       
-           
-           {/* <div className="col-sm">Recent Activity</div> */}
-       </div>
-   </div>
-</div>
-);
+    
+    let sn = 1;
+
+    const [data,
+        setData] = useState([]);
+
+    const fetchData = async () => {
+        const fetchedData = await fetch("http://127.0.0.1:8000/adminsite/noticeboard/");
+        const jsonFetchedData = await fetchedData.json();
+        // console.log(jsonFetchedData);
+        setData(jsonFetchedData);
+        console.log(data)
+    }
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    return (
+        <div className="maincontent">
+                <div className="conatiner noticebody">
+                {data.map(notice => (
+                    <div className="notices">
+                        <div className="row">
+                            <div className="title col-sm-6">
+                                <h4 style={{ textAlign: "left" }}><strong>{notice.notice_title}</strong></h4>
+                            </div>
+                        </div>
+                        <p className="description">{notice.notice_description}</p>
+                        <p className="created">-{notice.created_by}</p>
+
+                        <hr ></hr>
+                    </div>
+                ))}
+
+                {/* <div className="col-sm">Recent Activity</div> */}
+            </div>
+                {/* <div className="col-sm">Recent Activity</div> */}
+                </div>
+    );
 }
 
 export default TeacherNotice
