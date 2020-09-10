@@ -4,11 +4,18 @@ import {Button, Table} from "reactstrap"
 import {Link} from "react-router-dom"
 
 
-export default function Message() {
+export default function Message({match}) {
   const [studentDetail, setStudentDetail] = useState([]);
   const [messageData, setMessageData] = useState([])
   const fetch_message = async () =>{
-    const fetchMessage = await fetch("http://127.0.0.1:8000/adminsite/directmessage/")
+    const fetchMessage = await fetch("http://127.0.0.1:8000/adminsite/directmessage/",
+    {
+      method: 'GET',
+      headers: {
+       "Authorization": `Token ${localStorage.getItem('token')}`,
+       "Content-Type": "application/json"
+     },
+    })
     const fetchmessagejson = await fetchMessage.json()
     const teacherMessageFilter = fetchmessagejson.filter(msg => msg.teacher_name == 1)
     setMessageData(teacherMessageFilter)
@@ -16,7 +23,14 @@ export default function Message() {
   }
 
   const fetch_student_detail = async() =>{
-    const fetchDetail = await fetch("http://127.0.0.1:8000/adminsite/studentregister/")
+    const fetchDetail = await fetch("http://127.0.0.1:8000/adminsite/studentregister/",
+    {
+      method: 'GET',
+      headers: {
+       "Authorization": `Token ${localStorage.getItem('token')}`,
+       "Content-Type": "application/json"
+     }, 
+    })
     const fetchedStudentDetail = await fetchDetail.json()
     setStudentDetail(fetchedStudentDetail)
     console.log(studentDetail)
@@ -25,20 +39,18 @@ export default function Message() {
     fetch_message();
     fetch_student_detail();
   }, [])
-  const SN = 1;
   return (
     <div>
       <div className="maincontent">
       <div className="container">
         <div className="row">
-          <Link to="hello">
-            <Button color='primary'>Add Teacher &nbsp;
+          <Link to={`${match.url}/create-message`}>
+            <Button color='primary'>Add Message &nbsp;
             <FaPlus className='text-light'/></Button>
           </Link>
           <Table bordered>
             <thead>
               <tr>
-                <th>S.N.</th>
                 <th>To:</th>
                 <th>Message</th>
                 {/* <th></th> */}
@@ -49,13 +61,14 @@ export default function Message() {
               {
                 messageData.map(message=>(
                   <tr>
-                    <td>{SN}</td>
-                    <td>{message.student_name}
-                    </td>
-                    {/* i am here */}
-                    <td>{}</td>
-                    {/* here  */}
+                    {studentDetail.map(student=>(
+                      student.admission_number == message.student_admission_number ? <td>{
+                        student.student_user.first_name + " " + student.student_user.middle_name + " " + student.student_user.last_name}</td> : null
+                      ))}
                     <td>{message.message}</td>
+                    <td><Link to={`${match.url}/delete-message/${message.id}`} className='col-sm'>
+                      <FaTrash className='text-danger'/>
+                    </Link></td>
                   </tr>
                 ))
                 }

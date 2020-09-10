@@ -11,7 +11,8 @@ export default function CreateMessage() {
     const teacher_id = 1;
     const [studentdata, setStudentData] = useState({
         "message": "",
-        "student_name": "",
+        "student_name": 1,
+        "attachment": null,
         "teacher_name": teacher_id
     }
     )
@@ -23,18 +24,24 @@ export default function CreateMessage() {
             [name]: value
         }))  
     }
-    const handleSubmit = () =>{
+    const handleSubmit = async () =>{
         console.log(studentdata)
-        const fetchstudentpost = fetch ("http://127.0.0.1:8000/adminsite/directmessage/", 
+        const fetchstudentpost = await fetch("http://127.0.0.1:8000/adminsite/directmessage/", 
             {
                 method: 'POST', 
                 body:JSON.stringify(studentdata), 
                 headers:{ 
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `Token ${localStorage.getItem('token')}`,
                  }
+            }).then(response=>{
+              if (response.ok){
+                window.location = "/message"
+              }
+              else{
+                alert("Error Creating Message")
+              }
             })
-            .then(res => res.json())
-            .then(() => window.location="/");
     }
 
 
@@ -42,7 +49,15 @@ export default function CreateMessage() {
     setData] = useState([]);
 
   const fetchData = async() => {
-    const fetchedData = await fetch("http://127.0.0.1:8000/adminsite/studentregister/");
+    const fetchedData = await fetch("http://127.0.0.1:8000/adminsite/studentregister/",
+    {
+      method: 'GET', 
+      headers:{ 
+          "Content-Type": "application/json",
+          "Authorization": `Token ${localStorage.getItem('token')}`,
+
+       }
+    });
     const jsonFetchedData = await fetchedData.json();
     // console.log(jsonFetchedData);
     setData(jsonFetchedData);
@@ -63,11 +78,12 @@ export default function CreateMessage() {
           <Label>
             Student Name
           </Label>
+
           <Input type="select" name="student_name" id="student_name" onChange={handleChange}>
           <option selected hidden>Choose here</option>
               {data.map((student) =>(
-                  <option value={student.id}>
-                      {student.first_name+ " " + student.middle_name + " " + student.last_name}
+                  <option value={student.admission_number}>
+                      {student.student_user.first_name+ " " + student.student_user.middle_name + " " + student.student_user.last_name}
                   </option>
               ))}
           </Input>
@@ -80,7 +96,7 @@ export default function CreateMessage() {
               {teacher_id}
           </Input>
         </FormGroup> */}
-        <Button onClick={handleSubmit}>
+        <Button type="submit" onClick={handleSubmit}>
             Submit
         </Button>
       </Form>

@@ -11,9 +11,14 @@ const DeleteTeacher = ({match}) => {
              "Authorization": `Token ${localStorage.getItem('token')}`,
              "Content-Type": "application/json"
            }
+         }).then(response=>{
+           if (response.ok){
+             window.location="/manageteacher";
+           }
+           else{
+             alert("error deleting teacher!")
+           }
          })
-        .then(() => window.location="/manageteacher");
-    //    setDel = true
     }
     useEffect(() => {
         deleteTeacherFunction();
@@ -21,8 +26,7 @@ const DeleteTeacher = ({match}) => {
 
 
     return (
-        // checkDel
-        <Redirect to="/manageteacher" />
+        <div>Deleting Teacher</div>
     );
 };
 

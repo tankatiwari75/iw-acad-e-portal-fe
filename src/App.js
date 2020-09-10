@@ -17,6 +17,7 @@ import Timetable from './Component/StudentPanel/Timetable/Timetable';
 import Schedule from './Component/StudentPanel/Schedule/Schedule';
 import Logout from "./Component/Logout/Logout"
 import Login from "./Component/Login/Login"
+import StudentMessage from "./Component/StudentPanel/StudentMessage/StudentMessage"
 
 
 // import admin views
@@ -54,6 +55,8 @@ import Footer from './Component/Footer/footer';
 import TeacherAttendance from "./Component/Teacher/TeacherAttendance/TeacherAttendance"
 // import Manage from './Component/Teacher/DirectMessage/Manage';
 import Message from './Component/Teacher/DirectMessage/Message';
+import DeleteMessage from "./Component/Teacher/DirectMessage/DeleteMessage/DeleteMessage";
+import CreateMessage from './Component/Teacher/DirectMessage/CreateMessage/CreateMessage';
 
 // imported Profile
 const username = localStorage.getItem("username")
@@ -80,6 +83,7 @@ function App() {
         <Route path='/time-table' component={Timetable}/>
         <Route path='/schedule' component={Schedule}/>
         <Route path='/logout' component={Logout}/>
+        <Route path='/message' component={StudentMessage} />
         {/* This is for message */}
         {/* <Route path='/schedule' component={Schedule}/> */}
         {/* this is for message */}
@@ -134,7 +138,10 @@ function App() {
           <Route path="/" exact component={TeacherPanel} />
           <Route path="/notice" component={TeacherNotice} />
           <Route path="/attendance-upload" component={TeacherAttendance} />  
-          <Route path="/message" component={Message} />
+          <Route path="/message" exact component={Message} />
+          <Route path="/message/delete-message/:id" exact component={DeleteMessage} />
+          <Route path="/message/create-message/" exact component={CreateMessage} />
+
 
 
           <Route path='/calendar' component={CalenderDetails} />
