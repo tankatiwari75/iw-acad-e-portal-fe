@@ -43,7 +43,7 @@ const Result = (props) => {
                                 <td>{student.teacher_name}</td>
                                 <td>{student.subject_name}</td>
                                 <td>{student.marks}</td>
-                                <td>{student.pass_status}</td>
+                                <td>{student.marks > 40 ? <strong>Passed</strong> : <strong>Failed</strong>}</td>
 
                             </tr>
                         ))}

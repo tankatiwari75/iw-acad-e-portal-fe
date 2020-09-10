@@ -35,7 +35,11 @@ import ManageNotice from './Component/AdminPanel/ManageNotice/ManageNotice';
 import TeacherPanel from "./Component/Teacher/TeacherPanel"
 import TeacherNotice from "./Component/Teacher/TeacherNotice/TeacherNotice"
 import TeacherAttendance from "./Component/Teacher/TeacherAttendance/TeacherAttendance"
-
+import AddNewStudentForAttendance from "./Component/Teacher/TeacherAttendance/AddNewStudentForAttendance/AddNewStudentForAttendance"
+import UpdateAttendance from "./Component/Teacher/TeacherAttendance/UpdateAttendance/UpdateAttendance"
+import TeacherResult from "./Component/Teacher/TeacherResult/TeacherResult"
+import AddNewStudentForResult from './Component/Teacher/TeacherResult/AddNewStudentForResult/AddNewStudentForResult';
+import UpdateResult from './Component/Teacher/TeacherResult/UpdateResult/UpdateResult'
 
 
 
@@ -100,9 +104,14 @@ function App() {
           <Breadcrumber titlename = "Rajeet"/>
           <Route path="/" exact component={TeacherPanel} />
           <Route path="/notice" component={TeacherNotice} />
-          <Route path="/attendance-upload" component={TeacherAttendance} />  
 
-
+          {/* for attendance */}
+          <Route path="/attendance-upload" exact component={TeacherAttendance} />
+          <Route path="/attendance-upload/add-newstudent-attendance/:teacher_id/:class_number/:subject_name" component={AddNewStudentForAttendance}/>
+          <Route path="/result-upload/add-newstudent-result/:teacher_id/:class_number/:subject_name" component={AddNewStudentForResult}/>
+          <Route path="/attendance-upload/update-attendance/:id" component={UpdateAttendance}/>
+          <Route path="/result-upload/update-result/:id" component={UpdateResult}/>
+          <Route path="/result-upload" exact component={TeacherResult}/>
           <Route path='/calendar' component={CalenderDetails} />
           <Route path='/logout' component={Logout}/>
 
