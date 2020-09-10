@@ -98,6 +98,8 @@ function App() {
           <Navigation/>
           <Breadcrumber titlename = "Rajeet"/>
           <Route path="/" exact component={AdminPanel} />
+          <Route path="/Profile" component={Profile} /> 
+
           <Route path="/managestudent" exact component={Managestudent} /> 
           <Route path="/manageteacher" exact component={ManageTeacher} />
           <Route path="/manageteacher/add-teacher" component={AddTeacher} />
@@ -135,6 +137,7 @@ function App() {
         <div className="App bg-light">
           <Navigation/>
           <Breadcrumber titlename = "Rajeet"/>
+          <Route path="/Profile" component={Profile} /> 
           <Route path="/" exact component={TeacherPanel} />
           <Route path="/notice" component={TeacherNotice} />
           <Route path="/attendance-upload" component={TeacherAttendance} />  

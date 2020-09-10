@@ -8,6 +8,7 @@ export default function Message({match}) {
   const [teacherDetail, setTeacherDetail] = useState([]);
   const [messageData, setMessageData] = useState([])
   const fetch_message = async () =>{
+    //   here we have used fixed student id.
       const student_id = 111;
     const fetchMessage = await fetch("http://127.0.0.1:8000/adminsite/directmessage/",
     {
