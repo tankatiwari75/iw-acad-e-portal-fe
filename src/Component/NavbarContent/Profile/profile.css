@@ -1,1 +1,3 @@
-.center-text
+.capital{
+    text-transform:capitalize;
+}

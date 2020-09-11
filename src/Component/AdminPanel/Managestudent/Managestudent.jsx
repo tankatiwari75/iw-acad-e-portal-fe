@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FaPlus, FaEdit, FaMinus, FaInfo, FaTrash} from 'react-icons/fa';
+import {FaPlus, FaEdit, FaInfo, FaTrash} from 'react-icons/fa';
 // import css
 import "./managestudent.css"
 
@@ -22,7 +22,15 @@ function Managestudent({match}) {
     setData] = useState([]);
 
   const fetchData = async() => {
-    const fetchedData = await fetch("http://127.0.0.1:8000/adminsite/studentregister/");
+    const fetchedData = await fetch("http://127.0.0.1:8000/adminsite/studentregister/",
+    {
+      method: "GET",
+      headers: {
+        "Authorization": `Token ${localStorage.getItem('token')}`,
+        "Content-Type": "application/json"
+      }
+    }
+    );
     const jsonFetchedData = await fetchedData.json();
     // console.log(jsonFetchedData);
     setData(jsonFetchedData);
@@ -46,8 +54,9 @@ return (
           <Table bordered>
             <thead>
               <tr>
-                <th>S.N.</th>
+                <th>Admission Number</th>
                 <th>Name</th>
+                <th>Username</th>
                 <th>Class</th>
                 <th>Address</th>
                 <th>Action</th>
@@ -64,10 +73,12 @@ return (
 
               {data.map(student => (
                 <tr>
-                  <th scope="row">{sn++}</th>
-                  <td>{student.first_name + "  " + student.middle_name + " " + student.last_name}</td>
+                  <th scope="row">{student.admission_number}</th>
+                  <td>{student.student_user.first_name + "  " + student.student_user.middle_name + " " + student.student_user.last_name}</td>
+                  <td>{student.student_user.username}</td>
                   <td>{student.class_number}</td>
                   <td>{student.address}</td>
+
                   <td>
                     <Link to={`${match.url}/view-student-detail/${student.id}`} className='col-sm'>
                       <FaInfo className='text-success'/>

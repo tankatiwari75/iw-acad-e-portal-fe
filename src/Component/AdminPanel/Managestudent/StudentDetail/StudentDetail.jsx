@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {
     Table
 } from "reactstrap"
+const data = {}
 
 const StudentDetail = ({match}) => {
   useEffect(() => {
@@ -12,11 +13,19 @@ const StudentDetail = ({match}) => {
     setStudent] = useState([]);
 
   const fetchData = async() => {
-    const fetchedData = await fetch(`http://127.0.0.1:8000/adminsite/studentregister/${match.params.id}`);
+    const fetchedData = await fetch(`http://127.0.0.1:8000/adminsite/studentregister/${match.params.id}`,
+    {
+        method: "GET",
+        headers: {
+            "Authorization": `Token ${localStorage.getItem('token')}`,
+          "Content-Type": "application/json"
+        }
+      }
+    );
     const jsonFetchedData = await fetchedData.json();
     // console.log(jsonFetchedData);
     setStudent(jsonFetchedData);
-    console.log(student)
+    // console.log(student)
   }
 
   return (
@@ -29,6 +38,10 @@ const StudentDetail = ({match}) => {
                <tr>
                    <td>Name:</td>
                    <td>{student.first_name + "  " + student.middle_name + " " + student.last_name}</td>
+               </tr>
+               <tr>
+                   <td>Username:</td>
+                   <td>{student.first_name}</td>
                </tr>
                <tr>
                    <td>Email:</td>

@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Logout = () => {
+    useEffect(() => {
+        logout();
+      }, [])
+    const logout = () =>{
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        window.location="/";
+    }
     return (
         <div>
-            this is logout
+           Logging out...
         </div>
     );
 };

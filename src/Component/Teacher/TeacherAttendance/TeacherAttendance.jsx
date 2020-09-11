@@ -7,7 +7,7 @@ function TeacherAttendance() {
     const fetchData = async () => {
         const fetchedData = await fetch("http://127.0.0.1:8000/teachers/10/1/Math/");
         const jsonFetchedData = await fetchedData.json();
-        // console.log(jsonFetchedData);
+        console.log(jsonFetchedData);
         setstudents(jsonFetchedData);
     }
     useEffect(() => {
