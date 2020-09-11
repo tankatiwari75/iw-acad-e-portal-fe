@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Table, Form, FormGroup, Input, Label, Button } from 'reactstrap';
 import { FaPlus, FaTrash, FaMinus, FaRegEdit } from 'react-icons/fa';
-import './TeacherAttendance.css';
+import Text from 'react'
 import {
     Link
 } from 'react-router-dom'
 
-export default class TeacherAttendance extends React.Component {
+export default class TeacherResult extends React.Component {
     constructor(props) {
         super(props);
 
-    const fetchData = async () => {
-        const fetchedData = await fetch("http://127.0.0.1:8000/teachers/10/1/Math/");
-        const jsonFetchedData = await fetchedData.json();
-        console.log(jsonFetchedData);
-        setstudents(jsonFetchedData);
         this.state = {
             class_number: 9,
             teacher_id: "102",
@@ -86,11 +81,9 @@ export default class TeacherAttendance extends React.Component {
             });
 
     }
-
-
     toggleButtonState = () => {
         let datas = [];
-        const url = `http://127.0.0.1:8000/teachers/${this.state.teacher_id}/${this.state.subject_name}/`;
+        const url = `http://127.0.0.1:8000/teachers/result/${this.state.teacher_id}/${this.state.subject_name}/`;
         fetch(url)
             .then(response => {
                 return response.json();
@@ -103,12 +96,8 @@ export default class TeacherAttendance extends React.Component {
                 });
             });
     }
-    render() {
-        console.log(this.state.class_number)
-        console.log(this.state.subject_name)
-        console.log(this.state.subjects)
-        console.log(this.state.teacher_id)
 
+    render() {
         return (
             <div className="main">
                 <div className="container">
@@ -121,6 +110,7 @@ export default class TeacherAttendance extends React.Component {
                             ))}
                         </select>
                         <button onClick={this.fetchSubject}>Get subjects</button>
+
                         <select className="select" value={this.state.subject_name} onChange={this.handleChangesubject} >
                             {this.state.subjects.map((classnumber) => (
                                 <option value={classnumber.subject_name}>
@@ -132,7 +122,7 @@ export default class TeacherAttendance extends React.Component {
                     </div>
                 </div>
                 <div>
-                    <Link to={`${this.props.match.url}/add-newstudent-attendance/${this.state.teacher_id}/${this.state.class_number}/${this.state.subject_name}`}>
+                    <Link to={`${this.props.match.url}/add-newstudent-result/${this.state.teacher_id}/${this.state.class_number}/${this.state.subject_name}`}>
                         <Button color='primary'>Add New Student &nbsp;
                     <FaPlus className='text-light' /></Button>
                     </Link>
@@ -143,24 +133,21 @@ export default class TeacherAttendance extends React.Component {
                             <th>Student ID</th>
                             <th>Teacher ID</th>
                             <th>Subject Name</th>
-                            <th>Class Present</th>
-                            <th>Class Held</th>
-                            <th>Update Attendance</th>
+                            <th>marks Obtained</th>
+                            <th>Result Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.state.students.map(student => (
                             <tr>
                                 <td>{student.student_id}</td>
-                                <td>{student.teacher_id}</td>
+                                <td>{student.teacher_name}</td>
                                 <td>{student.subject_name}</td>
-                                <td>{student.class_present}</td>
-                                <td>{student.class_held}</td>
-                                <td>
-                                    <Link to={`${this.props.match.url}/update-attendance/${student.id}/`}>
-                                        <Button>Update &nbsp;</Button>
-                                    </Link>
-                                </td>
+                                <td>{student.marks}</td>
+                                <td>{student.marks > 40 ? <strong>Passed</strong> : <strong>Failed</strong>}</td>
+                                <td><Link to={`${this.props.match.url}/update-result/${student.id}/`}>
+                                    <Button>Update &nbsp;</Button>
+                                </Link></td >
                             </tr>
                         ))}
                     </tbody>

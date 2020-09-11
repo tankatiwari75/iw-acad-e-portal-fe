@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+
+import { useState, useEffect } from 'react';
 
 import {
     Button,
@@ -7,14 +9,20 @@ import {
     Input,
     Label,
 } from 'reactstrap';
-function AddNotice(props) {
+
+export default function AddNewStudentForResult(props) {
     const [datas, setDatas] = useState({
-        "notice_title": "",
-        "notice_description": "",
-        "created_by": "tanka",
+        "student_id": "",
+        "teacher_name":  props.match.params.teacher_id,
+        "subject_name":  props.match.params.subject_name,
+        "class_number":props.match.params.class_number,
+        "marks":"",
+        "pass_status":true
+        
+        
     })
 
-    console.log(datas)
+
     const handleChange = (event) => {
         const { name, value } = event.target;
         setDatas(prevState => ({
@@ -24,9 +32,16 @@ function AddNotice(props) {
     }
 
     const handleSubmit = () => {
-
+        const daat = {
+            "student_id": "",
+            "teacher_id": "",
+            "subject_name": "",
+            "marks":"",
+            "pass_status":"",
+            "class_number":"10"
+            }
             // const redirection = (<Redirect to="/managenotice" />)
-            const fetchnoticepost = fetch ("http://127.0.0.1:8000/adminsite/noticeboard/", 
+            const fetchnoticepost = fetch ("http://127.0.0.1:8000/teachers/resultuploads/", 
             {
                 method: 'POST', 
                 body:JSON.stringify(datas), 
@@ -35,36 +50,36 @@ function AddNotice(props) {
                  }
             })
             .then(res => res.json())
-            .then(() => window.location="/managenotice");
+            //.then(() => window.location="/attendance-upload");
             // .then(redirection)
                       
-            
+            console.log(daat)
             
     }
     return (
+
         <div className="container container-fluid">
             <Form>
                 <div className='row text-left'>
                     <FormGroup className="col-sm-6">
-                        <Label for="notice-title">Notice Title</Label>
+                        <Label for="notice-title">Student ID</Label>
                         <Input
                             type="text"
-                            name="notice_title"
-                            id="notice_title"
+                            name="student_id"
+                            id="student_id"
                             onChange={handleChange}
-                            placeholder="notice_title"
+                           
                             required />
                     </FormGroup>
                 </div>
                 <div className='row text-left'>
                     <FormGroup className="col-sm-6">
-                        <Label for="notice-description">Notice Description</Label>
+                        <Label for="notice-description">Mark Obtained</Label>
                         <Input
-                            type="textarea"
-                            name="notice_description"
-                            id="notice_description"
+                            type="text"
+                            name="marks"
+                            id="marks"
                             onChange={handleChange}
-                            rows={5}
                         />
                     </FormGroup>
                 </div>
@@ -73,5 +88,3 @@ function AddNotice(props) {
         </div>
     )
 }
-
-export default AddNotice;
