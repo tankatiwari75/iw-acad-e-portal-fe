@@ -15,6 +15,7 @@ import Attendance from './Component/StudentPanel/Attendance/Attendance';
 import Result from './Component/StudentPanel/Result/Result';
 import Timetable from './Component/StudentPanel/Timetable/Timetable';
 import Schedule from './Component/StudentPanel/Schedule/Schedule';
+
 import Logout from "./Component/Logout/Logout"
 import Login from "./Component/Login/Login"
 
@@ -44,6 +45,9 @@ import TeacherPanel from "./Component/Teacher/TeacherPanel"
 import TeacherNotice from "./Component/Teacher/TeacherNotice/TeacherNotice"
 import DeleteStudent from './Component/AdminPanel/Managestudent/DeleteStudent/DeleteStudent';
 
+import TimetableDetail from './Component/StudentPanel/Timetable/Timetabledetail';
+import ScheduleDetail from './Component/StudentPanel/Schedule/ScheduleDetail';
+
 
 
 
@@ -68,7 +72,10 @@ function App() {
         <Route path='/attendance' component={Attendance}/>
         <Route path='/result' component={Result}/>
         <Route path='/time-table' component={Timetable}/>
+          <Route path='/time-table/id:' component={TimetableDetail}/>
+
         <Route path='/schedule' component={Schedule}/>
+        <Route path ='/schedule/id:' component ={ScheduleDetail}/>
         <Route path='/logout' component={Logout}/>
         {/* This is for message */}
         {/* <Route path='/schedule' component={Schedule}/> */}
