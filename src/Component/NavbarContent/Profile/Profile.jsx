@@ -9,7 +9,7 @@ function Profile() {
 
     useEffect(() => {
         fetch_user_data()
-    })
+    }, [])
 
     const fetch_user_data = async() => {
         if (username.slice(0,4) =="stu."){
@@ -76,11 +76,7 @@ return (
             {/* if student */}
             {userData.class_number ? (<li className="list-group-item text-left">Class: {userData.class_number}</li>) : null}
             {userData.gender ? (<li className="list-group-item text-left">Gender: {userData.gender}</li>) : null}
-            
-            <li className="list-group-item text-left">Date of Birth: 111</li>
-            <li className="list-group-item text-left">Address: Chobhar</li>
-
-
+            {userData.date_of_birth ? (<li className="list-group-item text-left">Date of Birth: {userData.date_of_birth}</li>) : null}
         </ul>
         <div className="card-body">
             <a href="#" className="card-link">Edit Profile</a>
