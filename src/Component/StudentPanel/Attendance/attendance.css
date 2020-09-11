@@ -1,0 +1,7 @@
+.table{
+    width: 80%;
+    justify-content: center;
+    text-align: center;
+    padding:10px 100px 0 100px;
+    border:1rem solid;
+}

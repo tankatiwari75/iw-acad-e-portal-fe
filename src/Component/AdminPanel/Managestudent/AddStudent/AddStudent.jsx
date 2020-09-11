@@ -10,65 +10,94 @@ import {
 import { Redirect } from 'react-router-dom';
 
 const AddStudent = (props) => {
+  console.log(localStorage.getItem('token'))
+  const [daata, setDaata] = useState({})
+  const [studentData, setStudentData] = useState({
+          "username": "",
+          "first_name": "",
+          "middle_name": "",
+          "last_name": "",
+          "email": "",
+          "password": ""
+  })
     const [datas, setDatas] = useState({
+      // "student_user": {
+      //     // "username": "",
+      //     // "first_name": "",
+      //     // "middle_name": "",
+      //     // "last_name": "",
+      //     // "email": "",
+      //     // "password": ""
+      // },
+      "profile_picture": null,
+      "admission_number": null,
+      "class_number": null,
+      "age": null,
+      "gender": null,
+      "parents_number": "",
+      "date_of_birth": null,
+      "address": ""
+  })
 
-        "profile_picture": null,
-        "first_name": "",
-        "middle_name": "",
-        "last_name": "",
-        "email": "",
-        "admission_number": 1,
-        "age": 21,
-        "gender": "",
-        "parents_number": "",
-        "date_of_birth": "",
-        "address": "",
-        "password": "",
-        "class_number": ""
-        
-
-    })
-
-    console.log(datas)
+    // console.log(datas)
     const handleChange = (event) => {
-        const { name, value } = event.target;
+      const { name, value } = event.target;
+      if (name == "username" || name =="first_name" || name =="last_name" || name=="middle_name" || name =="email" || name=="password"){
+        setStudentData(prevState => ({
+          ...prevState,
+          [name]: value
+        }))
+        // console.log(studentData) 
+      }
+      else{
         setDatas(prevState => ({
-            ...prevState,
-            [name]: value
-        }))  
+          ...prevState,
+          [name]: value
+      }))  
+      // console.log(datas) 
+      }  
+       
+        
     }
 
     const handleSubmit = () => {
         const daat = {
-                "profile_picture": null,
-                "first_name": "a",
-                "middle_name": "",
-                "last_name": "s",
-                "email": "aa@gmail.com",
-                "admission_number": 1,
-                "age": 21,
-                "gender": "M",
-                "parents_number": "2334567894",
-                "date_of_birth": "2010-10-10",
-                "address": "chobhar, kirtipur, Kathmandu",
-                "password": "helloworld",
-                "class_number": "10"
+          "student_user": {
+            "username": "stu." + studentData['username'],
+            "first_name": studentData['first_name'],
+            "middle_name": studentData['middle_name'],
+            "last_name": studentData['last_name'],
+            "email": studentData['email'],
+            "password": studentData['password']
+        },
+        "profile_picture": datas['profile_picture'],
+        "admission_number": datas['admission_number'],
+        "class_number": datas['class_number'],
+          "age": datas['age'],
+        "gender": datas['gender'],
+        "parents_number": datas['parents_number'],
+        "date_of_birth": datas['date_of_birth'],
+        "address": datas['address']
             }
-            // const redirection = (<Redirect to="/managestudents" />)
-            const fetchstudentpost = fetch ("http://127.0.0.1:8000/adminsite/studentregister/", 
-            {
-                method: 'POST', 
-                body:JSON.stringify(datas), 
-                headers:{ 
-                    "Content-Type": "application/json"
-                 }
-            })
-            .then(res => res.json())
-            .then(() => window.location="/managestudent");
-            // .then(redirection)
-                      
             console.log(daat)
-            
+            // const redirection = (<Redirect to="/managestudents" />)
+            const fetchstudentpost = fetch("http://127.0.0.1:8000/adminsite/studentregister/", 
+      
+            {
+              method: 'POST',
+              headers: {
+               "Authorization": `Token ${localStorage.getItem('token')}`,
+               "Content-Type": "application/json"
+             },
+             body:JSON.stringify(daat), 
+           }).then(function(response){
+             if (response.ok){
+              window.location="/managestudent";
+             }
+             else{
+                alert("Please Check details\n Username, Email, Admission Number Should be unique\n Fill all details carefully.");
+             }
+           })
     }
 
 
@@ -78,7 +107,7 @@ const AddStudent = (props) => {
         <div className='row text-left'>
           <FormGroup className="col-sm-4">
             <Label for="exampleEmail">First Name</Label>
-            <Input
+            <Input required
               type="text"
               name="first_name"
               id="first_name"
@@ -88,7 +117,7 @@ const AddStudent = (props) => {
 
           <FormGroup className="col-sm-4">
             <Label for="exampleEmail">Middle Name</Label>
-            <Input
+            <Input required
               type="text"
               name="middle_name"
               id="middle_name"
@@ -98,7 +127,7 @@ const AddStudent = (props) => {
 
           <FormGroup className="col-sm-4">
             <Label for="exampleEmail">Last Name</Label>
-            <Input
+            <Input required
               type="text"
               name="last_name"
               id="last_name"
@@ -108,10 +137,21 @@ const AddStudent = (props) => {
           </FormGroup>
         </div>
       {/* second line */}
+      
+
         <div className='row text-left'>
+        <FormGroup className="col-sm-12">
+            <Label for="exampleEmail">Username</Label>
+            <Input required
+              type="text"
+              name="username"
+              id="username"
+              onChange={handleChange}
+              placeholder="Username Should be unique"/>
+          </FormGroup>
           <FormGroup className="col-sm-4">
             <Label for="exampleEmail">Email</Label>
-            <Input
+            <Input required
               type="email"
               name="email"
               id="email"
@@ -121,7 +161,7 @@ const AddStudent = (props) => {
 
           <FormGroup className="col-sm-4">
             <Label for="exampleEmail">Address</Label>
-            <Input
+            <Input required
               type="text"
               name="address"
               id="address"
@@ -131,7 +171,7 @@ const AddStudent = (props) => {
 
           <FormGroup className="col-sm-4">
             <Label for="exampleEmail">Date of Birth</Label>
-            <Input
+            <Input required
               type="date"
               name="date_of_birth"
               id="date_of_birth"
@@ -145,7 +185,7 @@ const AddStudent = (props) => {
         <div className='row text-left'>
           <FormGroup className="col-sm-4">
             <Label for="exampleEmail">Admission Number</Label>
-            <Input
+            <Input required
               type="number"
               name="admission_number"
               id="admission_number"
@@ -155,7 +195,7 @@ const AddStudent = (props) => {
 
           <FormGroup className="col-sm-4">
             <Label for="exampleEmail">Parents Number</Label>
-            <Input
+            <Input required
               type="text"
               name="parents_number"
               id="parents_number"
@@ -165,23 +205,49 @@ const AddStudent = (props) => {
 
           <FormGroup className="col-sm-4">
           <Label for="exampleEmail">Class Number</Label>
-            <Input
+            {/* <Input required
               type="number"
               name="class_number"
               id="class_number"
               onChange={handleChange}
-              placeholder="Class Number"/>
+              placeholder="Class Number"/> */}
+              <Input required type="select"
+              name="class_number"
+              id="class_number"
+              onChange={handleChange}
+              placeholder="Enter Class Room"
+              >
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+        </Input>
 
           </FormGroup>
         </div>
         {/* fourth line */}
         <div className='row text-left'>
-          <FormGroup className="col-sm-4">
-            <Label for="exampleEmail">Password</Label>
-            <Input
+        <FormGroup className="col-sm-4">
+            <Label for="password">Password</Label>
+            <Input required
               type="password"
               name="password"
               id="password"
+              onChange={handleChange}
+              placeholder="Password"/>
+          </FormGroup>
+          <FormGroup className="col-sm-4">
+            <Label for="age">Age</Label>
+            <Input required
+              type="number"
+              name="age"
+              id="age"
               onChange={handleChange}
               placeholder="Password"/>
           </FormGroup>
@@ -190,18 +256,18 @@ const AddStudent = (props) => {
         <legend>Gender</legend>
         <FormGroup check>
           <Label check>
-            <Input type="radio"  onChange={handleChange} name="gender" value="M" />{'Male'}
+            <Input required type="radio"  onChange={handleChange} name="gender" value="M" />{'Male'}
           </Label>
         </FormGroup>
         <FormGroup check>
           <Label check>
-            <Input type="radio"  onChange={handleChange} name="gender" value = "F" />{'Female'}
+            <Input required type="radio"  onChange={handleChange} name="gender" value = "F" />{'Female'}
           </Label>
         </FormGroup>
       </FormGroup>
 {/* radio buttons */}
        
-          <FormGroup className="col-sm-4" onChange={handleChange}>
+          {/* <FormGroup className="col-sm-4" onChange={handleChange}>
           
             <Label for="exampleEmail">Upload Picture</Label>
             <Input
@@ -209,9 +275,9 @@ const AddStudent = (props) => {
               name="profile_picture"
               id="profile_picture"
               />
-          </FormGroup>
+          </FormGroup> */}
         </div>
-        <Button className="float-left" color="primary" onClick={handleSubmit}>Submit</Button>
+        <Button type="submit" className="float-left" color="primary" onClick={handleSubmit}>Submit</Button>
       </Form>
     </div>
   );
