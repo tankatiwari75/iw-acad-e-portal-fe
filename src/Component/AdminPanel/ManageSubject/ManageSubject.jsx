@@ -19,7 +19,14 @@ function ManageSubject({match}) {
         setData] = useState([]);
     
       const fetchData = async() => {
-        const fetchedData = await fetch("http://127.0.0.1:8000/adminsite/addsubject/");
+        const fetchedData = await fetch("http://127.0.0.1:8000/adminsite/subjectregister/",
+          {
+            method: "GET",
+            headers: {
+              "Authorization": `Token ${localStorage.getItem('token')}`,
+              "Content-Type": "application/json"
+            }
+        });
         const jsonFetchedData = await fetchedData.json();
         // console.log(jsonFetchedData);
         setData(jsonFetchedData);
@@ -37,15 +44,24 @@ return (
        <Link className="col-sm box btn-ripple nounderline" to='/view-subject-detail'><FaInfo className='icons text-danger'/><h5 className="text-danger">View Detail</h5></Link>
        
        <Table bordered>
+         <thead>
+         <tr>
+           <th>S.N</th>
+           <th>Subject</th>
+           <th>Classroom</th>
+           <th>Action</th>
+           </tr>
+        </thead>
+        
             
             <tbody>
             
             {data.map(subject => (
                 <tr>
                   <th scope="row">{sn++}</th>
-                  <td>{subject.class_name}</td>
-                  <td>{subject.subject_number}</td>
-                  <td>{subject.subject_syllabus}</td>
+                  <td>{subject.subject_name}</td>
+
+                  <td>{subject.class_number}</td>
                   <td>
                     <Link to={`${match.url}/view-subject-detail/${subject.id}`} className='col-sm'>
                       <FaInfo className='text-success'/>

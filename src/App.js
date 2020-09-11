@@ -105,9 +105,10 @@ function App() {
           <Route path="/manageteacher/add-teacher" component={AddTeacher} />
           <Route path="/manageteacher/delete-teacher/:id" component={DeleteTeacher} />
           <Route path="/manageteacher/view-teacher-detail/:id" component={TeacherDetail} />
-          <Route path="/manageclassroom" component={ManageClass} /> 
+          <Route path="/manageclassroom" exact component={ManageClass} /> 
+          <Route path="/manageclassroom/add-classroom" component={AddClass} />
           <Route path="/managesubject" component={ManageSubject} /> 
-          <Route path="/managenotice" component={ManageNotice} />
+          {/* <Route path="/managenotice" component={ManageNotice} /> */}
           <Route path="/managestudent/add-student" component = {AddStudent} />
           <Route path="/managestudent/view-student-detail/:id" component = {StudentDetail} /> 
           <Route path="/managestudent/delete-student/:id" component = {DeleteStudent} /> 
@@ -116,7 +117,6 @@ function App() {
           <Route path="/edit-subject" component = {EditSubject} /> 
           <Route path="/delete-subject" component = {DeleteSubject} />
           <Route path="/view-subject-detail" component = {SubjectDetail} /> 
-          <Route path="/add-class" component = {AddClass} /> 
           <Route path="/delete-class" component = {DeleteClass} /> 
           <Route path='/logout' component={Logout}/> 
           <Route path="/managenotice" exact component={ManageNotice} /> 
