@@ -23,6 +23,7 @@ return (
            <Link className="col-sm box btn-ripple nounderline" to='/attendance-upload'><FaUsers className='icons text-warning'/><h5 className="text-warning">Attendance</h5></Link>
            <Link className="col-sm box btn-ripple nounderline" to='/result'><FaPoll className='icons text-primary'/><h5 className="text-primary">Results</h5></Link>
            <Link className="col-sm box btn-ripple nounderline" to="/message"><FaEnvelopeOpen className='icons text-primary'/><h5 className="text-primary">Messages</h5></Link>
+           <Link className="col-sm box btn-ripple nounderline" to='/result-upload'><FaPoll className='icons text-primary'/><h5 className="text-primary">Results</h5></Link>
            
            {/* <div className="col-sm">Recent Activity</div> */}
        </div>

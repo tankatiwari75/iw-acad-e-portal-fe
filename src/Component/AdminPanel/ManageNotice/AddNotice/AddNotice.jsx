@@ -23,7 +23,6 @@ function AddNotice(props) {
     }
 
     const handleSubmit = () => {
-        // console.log(datas)
             const fetchnoticepost = fetch ("http://127.0.0.1:8000/adminsite/noticeboard/", 
             {
                 method: 'POST', 

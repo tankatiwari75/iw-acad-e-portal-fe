@@ -64,6 +64,15 @@ const token = localStorage.getItem("token")
 
 
 
+import TeacherAttendance from "./Component/Teacher/TeacherAttendance/TeacherAttendance"
+import AddNewStudentForAttendance from "./Component/Teacher/TeacherAttendance/AddNewStudentForAttendance/AddNewStudentForAttendance"
+import UpdateAttendance from "./Component/Teacher/TeacherAttendance/UpdateAttendance/UpdateAttendance"
+import TeacherResult from "./Component/Teacher/TeacherResult/TeacherResult"
+import AddNewStudentForResult from './Component/Teacher/TeacherResult/AddNewStudentForResult/AddNewStudentForResult';
+import UpdateResult from './Component/Teacher/TeacherResult/UpdateResult/UpdateResult'
+import DeleteStudent from './Component/AdminPanel/Managestudent/DeleteStudent/DeleteStudent';
+
+
 function App() {
     console.log(username + token);
 
@@ -108,8 +117,9 @@ function App() {
           <Route path="/manageclassroom" exact component={ManageClass} /> 
           <Route path="/manageclassroom/add-classroom" component={AddClass} />
           <Route path="/managesubject" component={ManageSubject} /> 
-          {/* <Route path="/managenotice" component={ManageNotice} /> */}
-          <Route path="/managestudent/add-student" component = {AddStudent} />
+
+          <Route path="/managenotice" component={ManageNotice} />
+          <Route path="/managestudent/add-student"  component = {AddStudent} />
           <Route path="/managestudent/view-student-detail/:id" component = {StudentDetail} /> 
           <Route path="/managestudent/delete-student/:id" component = {DeleteStudent} /> 
           <Route path="/managestudent/edit-student/:id" component={EditStudent} />
@@ -119,12 +129,12 @@ function App() {
           <Route path="/view-subject-detail" component = {SubjectDetail} /> 
           <Route path="/delete-class" component = {DeleteClass} /> 
           <Route path='/logout' component={Logout}/> 
-          <Route path="/managenotice" exact component={ManageNotice} /> 
+
           <Route path="/managenotice/add-notice" component={AddNotice}/>
           <Route path="/managenotice/delete-notice/:id" component={DeleteNotice}/>
           <Route path="/managenotice/update-notice/:id" component={UpdateNotice}/>
-          <Route path='/calendar' component={CalenderDetails} />
-          <Route path='/logout' component={Logout}/>
+//           <Route path='/calendar' component={CalenderDetails} />
+          <Route path='/calendar' component={Calendar} />
 
 
 
@@ -140,13 +150,16 @@ function App() {
           <Route path="/Profile" component={Profile} /> 
           <Route path="/" exact component={TeacherPanel} />
           <Route path="/notice" component={TeacherNotice} />
-          <Route path="/attendance-upload" component={TeacherAttendance} />  
+          <Route path="/attendance-upload" exact component={TeacherAttendance} />  
           <Route path="/message" exact component={Message} />
           <Route path="/message/delete-message/:id" exact component={DeleteMessage} />
           <Route path="/message/create-message/" exact component={CreateMessage} />
-
-
-
+          {/* for attendance */}
+          <Route path="/attendance-upload/add-newstudent-attendance/:teacher_id/:class_number/:subject_name" component={AddNewStudentForAttendance}/>
+          <Route path="/result-upload/add-newstudent-result/:teacher_id/:class_number/:subject_name" component={AddNewStudentForResult}/>
+          <Route path="/attendance-upload/update-attendance/:id" component={UpdateAttendance}/>
+          <Route path="/result-upload/update-result/:id" component={UpdateResult}/>
+          <Route path="/result-upload" exact component={TeacherResult}/>
           <Route path='/calendar' component={CalenderDetails} />
           <Route path='/logout' component={Logout}/>
 
