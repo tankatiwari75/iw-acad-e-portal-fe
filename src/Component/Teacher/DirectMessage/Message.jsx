@@ -17,7 +17,7 @@ export default function Message({match}) {
      },
     })
     const fetchmessagejson = await fetchMessage.json()
-    const teacherMessageFilter = fetchmessagejson.filter(msg => msg.teacher_name == 1)
+    const teacherMessageFilter = fetchmessagejson.filter(msg => msg.teacher_name == 102)
     setMessageData(teacherMessageFilter)
     console.log(messageData)
   }

@@ -8,10 +8,10 @@ import {
   FormText
 } from 'reactstrap';
 export default function CreateMessage() {
-    const teacher_id = 1;
+    const teacher_id = 102;
     const [studentdata, setStudentData] = useState({
         "message": "",
-        "student_name": 1,
+        "admission_number": "",
         "attachment": null,
         "teacher_name": teacher_id
     }
@@ -34,15 +34,15 @@ export default function CreateMessage() {
                     "Content-Type": "application/json",
                     "Authorization": `Token ${localStorage.getItem('token')}`,
                  }
-            }).then(response=>{
-              if (response.ok){
-                window.location = "/message"
-              }
-              else{
-                alert("Error Creating Message")
-              }
-            })
-    }
+            // }).then(response=>{
+            //   if (response.ok){
+            //     window.location = "/message"
+            //   }
+            //   else{
+            //     alert("Error Creating Message")
+            //   }
+             })
+     }
 
 
   const [data,
@@ -62,13 +62,16 @@ export default function CreateMessage() {
     // console.log(jsonFetchedData);
     setData(jsonFetchedData);
     console.log(data)
+    console.log(studentdata.student_admission_number)
   }
 
   useEffect(() => {
     fetchData();
   }, [])
   return (
+   
     <div>
+      
       <Form>
         <FormGroup>
           <Label for="exampleText">Message</Label>
@@ -79,11 +82,11 @@ export default function CreateMessage() {
             Student Name
           </Label>
 
-          <Input type="select" name="student_name" id="student_name" onChange={handleChange}>
+          <Input type="select" name="admission_number" id="admission_number" onChange={handleChange}>
           <option selected hidden>Choose here</option>
               {data.map((student) =>(
                   <option value={student.admission_number}>
-                      {student.student_user.first_name+ " " + student.student_user.middle_name + " " + student.student_user.last_name}
+                      {student.student_user.first_name+ " "  + student.student_user.last_name}
                   </option>
               ))}
           </Input>
