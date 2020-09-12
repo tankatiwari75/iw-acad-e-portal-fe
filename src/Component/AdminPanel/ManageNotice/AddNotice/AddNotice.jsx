@@ -11,35 +11,29 @@ function AddNotice(props) {
     const [datas, setDatas] = useState({
         "notice_title": "",
         "notice_description": "",
-        "created_by": "tanka",
+        "created_by": localStorage.getItem("username"),
     })
-
-    console.log(datas)
     const handleChange = (event) => {
         const { name, value } = event.target;
         setDatas(prevState => ({
             ...prevState,
             [name]: value
         }))  
+        // console.log(datas)
     }
 
     const handleSubmit = () => {
-
-            // const redirection = (<Redirect to="/managenotice" />)
             const fetchnoticepost = fetch ("http://127.0.0.1:8000/adminsite/noticeboard/", 
             {
                 method: 'POST', 
                 body:JSON.stringify(datas), 
                 headers:{ 
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `Token ${localStorage.getItem('token')}`
                  }
             })
-            .then(res => res.json())
+            // .then(res => res.json())
             .then(() => window.location="/managenotice");
-            // .then(redirection)
-                      
-            
-            
     }
     return (
         <div className="container container-fluid">

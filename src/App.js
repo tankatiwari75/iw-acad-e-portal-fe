@@ -49,7 +49,6 @@ import DeleteClass from "./Component/AdminPanel/ManageClass/DeleteClass/DeleteCl
 //import teacher views
 import TeacherPanel from "./Component/Teacher/TeacherPanel"
 import TeacherNotice from "./Component/Teacher/TeacherNotice/TeacherNotice"
-<<<<<<< HEAD
 import EditStudent from "./Component/AdminPanel/Managestudent/EditStudent/EditStudent"
 import DeleteStudent from './Component/AdminPanel/Managestudent/DeleteStudent/DeleteStudent';
 import Footer from './Component/Footer/footer';
@@ -64,7 +63,6 @@ const username = localStorage.getItem("username")
 const token = localStorage.getItem("token")
 
 
-=======
 
 import TeacherAttendance from "./Component/Teacher/TeacherAttendance/TeacherAttendance"
 import AddNewStudentForAttendance from "./Component/Teacher/TeacherAttendance/AddNewStudentForAttendance/AddNewStudentForAttendance"
@@ -74,16 +72,6 @@ import AddNewStudentForResult from './Component/Teacher/TeacherResult/AddNewStud
 import UpdateResult from './Component/Teacher/TeacherResult/UpdateResult/UpdateResult'
 import DeleteStudent from './Component/AdminPanel/Managestudent/DeleteStudent/DeleteStudent';
 
-
-
-
-
-// imported Profile
-const login = true;
-const  student = false;
-const teacher=true;
-const admin=false;
->>>>>>> 428c964e624551be8b60ad7a87ae9bae8dcbcae0
 
 function App() {
     console.log(username + token);
@@ -126,11 +114,12 @@ function App() {
           <Route path="/manageteacher/add-teacher" component={AddTeacher} />
           <Route path="/manageteacher/delete-teacher/:id" component={DeleteTeacher} />
           <Route path="/manageteacher/view-teacher-detail/:id" component={TeacherDetail} />
-          <Route path="/manageclassroom" component={ManageClass} /> 
+          <Route path="/manageclassroom" exact component={ManageClass} /> 
+          <Route path="/manageclassroom/add-classroom" component={AddClass} />
           <Route path="/managesubject" component={ManageSubject} /> 
-<<<<<<< HEAD
+
           <Route path="/managenotice" component={ManageNotice} />
-          <Route path="/managestudent/add-student" component = {AddStudent} />
+          <Route path="/managestudent/add-student"  component = {AddStudent} />
           <Route path="/managestudent/view-student-detail/:id" component = {StudentDetail} /> 
           <Route path="/managestudent/delete-student/:id" component = {DeleteStudent} /> 
           <Route path="/managestudent/edit-student/:id" component={EditStudent} />
@@ -138,27 +127,14 @@ function App() {
           <Route path="/edit-subject" component = {EditSubject} /> 
           <Route path="/delete-subject" component = {DeleteSubject} />
           <Route path="/view-subject-detail" component = {SubjectDetail} /> 
-          <Route path="/add-class" component = {AddClass} /> 
           <Route path="/delete-class" component = {DeleteClass} /> 
           <Route path='/logout' component={Logout}/> 
-=======
 
->>>>>>> 428c964e624551be8b60ad7a87ae9bae8dcbcae0
-          <Route path="/managenotice" exact component={ManageNotice} /> 
           <Route path="/managenotice/add-notice" component={AddNotice}/>
           <Route path="/managenotice/delete-notice/:id" component={DeleteNotice}/>
           <Route path="/managenotice/update-notice/:id" component={UpdateNotice}/>
-          <Route path='/calendar' component={CalenderDetails} />
-<<<<<<< HEAD
-=======
-
-          <Route path="/managenotice" component={ManageNotice} />
-          <Route path="/managestudent/add-student" component = {AddStudent} /> 
-          <Route path="/managestudent/view-student-detail/:id" component = {StudentDetail} /> 
-          <Route path="/managestudent/delete-student/:id" component = {DeleteStudent} /> 
+//           <Route path='/calendar' component={CalenderDetails} />
           <Route path='/calendar' component={Calendar} />
->>>>>>> 428c964e624551be8b60ad7a87ae9bae8dcbcae0
-          <Route path='/logout' component={Logout}/>
 
 
 
@@ -174,18 +150,11 @@ function App() {
           <Route path="/Profile" component={Profile} /> 
           <Route path="/" exact component={TeacherPanel} />
           <Route path="/notice" component={TeacherNotice} />
-<<<<<<< HEAD
-          <Route path="/attendance-upload" component={TeacherAttendance} />  
+          <Route path="/attendance-upload" exact component={TeacherAttendance} />  
           <Route path="/message" exact component={Message} />
           <Route path="/message/delete-message/:id" exact component={DeleteMessage} />
           <Route path="/message/create-message/" exact component={CreateMessage} />
-
-
-=======
->>>>>>> 428c964e624551be8b60ad7a87ae9bae8dcbcae0
-
           {/* for attendance */}
-          <Route path="/attendance-upload" exact component={TeacherAttendance} />
           <Route path="/attendance-upload/add-newstudent-attendance/:teacher_id/:class_number/:subject_name" component={AddNewStudentForAttendance}/>
           <Route path="/result-upload/add-newstudent-result/:teacher_id/:class_number/:subject_name" component={AddNewStudentForResult}/>
           <Route path="/attendance-upload/update-attendance/:id" component={UpdateAttendance}/>

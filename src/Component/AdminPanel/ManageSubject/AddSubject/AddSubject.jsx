@@ -14,7 +14,7 @@ const AddSubject = (props) => {
 
         "class_name": "",
         "subject_name": "",
-        "subject_syllabus": "null"
+        "subject_syllabus": null
         
     })
 
@@ -28,25 +28,18 @@ const AddSubject = (props) => {
     }
 
     const handleSubmit = () => {
-        const data = {
-                "class_name": "",
-                "subject_name": "",
-                "subject_syllabus": "null"
-            }
-            // const redirection = (<Redirect to="/managestudents" />)
-            const fetchsubjectpost = fetch ("http://127.0.0.1:8000/adminsite/addsubject/", 
+            const fetchsubjectpost = fetch ("http://127.0.0.1:8000/adminsite/subjectregister/", 
             {
                 method: 'POST', 
                 body:JSON.stringify(datas), 
                 headers:{ 
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `Token ${localStorage.getItem('token')}`
+
                  }
             })
             .then(res => res.json())
-            .then(() => window.location="/managesubject");
-            // .then(redirection)
-                      
-            console.log(data)
+            // .then(() => window.location="/managesubject");
 }
 
 
@@ -55,13 +48,28 @@ return (
       <Form> 
         <div className='row text-left'>
           <FormGroup className="col-sm-4">
-            <Label for="exampleEmail">Class Name</Label>
-            <Input
+          <Label for="exampleEmail">Class Name</Label>
+          <Input type="select"
+             name="class_name"
+             id="class_name"
+             onChange={handleChange} id="exampleSelect">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </Input>
+            {/* <Input
               type="text"
               name="class_name"
               id="class_name"
               onChange={handleChange}
-              placeholder="Class Name"/>
+              placeholder="Class Name"/> */}
           </FormGroup>
           
           <FormGroup className="col-sm-4">

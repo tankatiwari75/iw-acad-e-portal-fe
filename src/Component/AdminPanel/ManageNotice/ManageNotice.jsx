@@ -22,18 +22,39 @@ function ManageNotice({ match }) {
         fetchData();
     }, [])
 
-    let sn = 1;
+    // let sn = 1;
 
     const [data,
         setData] = useState([]);
     
     const fetchData = async () => {
-        const fetchedData = await fetch("http://127.0.0.1:8000/adminsite/noticeboard/");
+        const fetchedData = await fetch("http://127.0.0.1:8000/adminsite/noticeboard/",
+            {
+                method: "GET",
+                headers: {
+                  "Authorization": `Token ${localStorage.getItem('token')}`,
+                  "Content-Type": "application/json"
+                }
+        });
         const jsonFetchedData = await fetchedData.json();
-        // console.log(jsonFetchedData);
+        console.log(jsonFetchedData);
         setData(jsonFetchedData);
         // console.log(data)
     }
+    if (data.length == 0){
+        return (
+            <div className="maincontent">
+                 <div className="conatiner main">
+                <Link to={`${match.url}/add-notice`}>
+                    <Button color='primary'>Add Notice &nbsp;
+                    <FaPlus className='text-light' /></Button>
+                </Link>
+            </div>
+                No Notice
+            </div>
+        )
+    }
+    else{
     return (
         <div className="maincontent">
             <div className="conatiner main">
@@ -70,6 +91,7 @@ function ManageNotice({ match }) {
             </div>
         </div >
     );
+                        }
 }
 
 export default ManageNotice;
