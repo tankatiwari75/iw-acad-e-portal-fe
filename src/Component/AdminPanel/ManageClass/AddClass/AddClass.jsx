@@ -31,15 +31,18 @@ const AddClass = (props) => {
                
             }
             // const redirection = (<Redirect to="/managestudents" />)
-            const fetchsubjectpost = fetch ("http://127.0.0.1:8000/adminsite/addclass/", 
+            const fetchsubjectpost = fetch ("http://127.0.0.1:8000/adminsite/add-classnumber/", 
             {
-                method: 'GET', 
+                method: 'POST', 
+                body:JSON.stringify(datas), 
                 headers: { 
-                    "Content-Type": "application/json"
-                } 
+                    "Content-Type": "application/json",
+                    "Authorization": `Token ${localStorage.getItem('token')}`
+
+                },
             })
-            .then(res => res.json())
-            .then(() => window.location="/manageclass");
+            // .then(res => res.json())
+            .then(() => window.location="/manageclassroom");
             // .then(redirection)
                       
             console.log(data) 
