@@ -45,14 +45,19 @@ import SubjectDetail from "./Component/AdminPanel/ManageSubject/SubjectDetail/Su
 import AddClass from "./Component/AdminPanel/ManageClass/AddClass/AddClass";
 import DeleteClass from "./Component/AdminPanel/ManageClass/DeleteClass/DeleteClass";  
 
-
+import TeacherAttendance from "./Component/Teacher/TeacherAttendance/TeacherAttendance"
+import AddNewStudentForAttendance from "./Component/Teacher/TeacherAttendance/AddNewStudentForAttendance/AddNewStudentForAttendance"
+import UpdateAttendance from "./Component/Teacher/TeacherAttendance/UpdateAttendance/UpdateAttendance"
+import TeacherResult from "./Component/Teacher/TeacherResult/TeacherResult"
+import AddNewStudentForResult from './Component/Teacher/TeacherResult/AddNewStudentForResult/AddNewStudentForResult';
+import UpdateResult from './Component/Teacher/TeacherResult/UpdateResult/UpdateResult'
 //import teacher views
 import TeacherPanel from "./Component/Teacher/TeacherPanel"
 import TeacherNotice from "./Component/Teacher/TeacherNotice/TeacherNotice"
 import EditStudent from "./Component/AdminPanel/Managestudent/EditStudent/EditStudent"
 import DeleteStudent from './Component/AdminPanel/Managestudent/DeleteStudent/DeleteStudent';
 import Footer from './Component/Footer/footer';
-import TeacherAttendance from "./Component/Teacher/TeacherAttendance/TeacherAttendance"
+// import TeacherAttendance from "./Component/Teacher/TeacherAttendance/TeacherAttendance"
 // import Manage from './Component/Teacher/DirectMessage/Manage';
 import Message from './Component/Teacher/DirectMessage/Message';
 import DeleteMessage from "./Component/Teacher/DirectMessage/DeleteMessage/DeleteMessage";
@@ -64,13 +69,8 @@ const token = localStorage.getItem("token")
 
 
 
-import TeacherAttendance from "./Component/Teacher/TeacherAttendance/TeacherAttendance"
-import AddNewStudentForAttendance from "./Component/Teacher/TeacherAttendance/AddNewStudentForAttendance/AddNewStudentForAttendance"
-import UpdateAttendance from "./Component/Teacher/TeacherAttendance/UpdateAttendance/UpdateAttendance"
-import TeacherResult from "./Component/Teacher/TeacherResult/TeacherResult"
-import AddNewStudentForResult from './Component/Teacher/TeacherResult/AddNewStudentForResult/AddNewStudentForResult';
-import UpdateResult from './Component/Teacher/TeacherResult/UpdateResult/UpdateResult'
-import DeleteStudent from './Component/AdminPanel/Managestudent/DeleteStudent/DeleteStudent';
+
+// import DeleteStudent from './Component/AdminPanel/Managestudent/DeleteStudent/DeleteStudent';
 
 
 function App() {
@@ -133,8 +133,8 @@ function App() {
           <Route path="/managenotice/add-notice" component={AddNotice}/>
           <Route path="/managenotice/delete-notice/:id" component={DeleteNotice}/>
           <Route path="/managenotice/update-notice/:id" component={UpdateNotice}/>
-//           <Route path='/calendar' component={CalenderDetails} />
-          <Route path='/calendar' component={Calendar} />
+          <Route path='/calendar' component={CalenderDetails} />
+          {/* //<Route path='/calendar' component={Calendar} /> */}
 
 
 
