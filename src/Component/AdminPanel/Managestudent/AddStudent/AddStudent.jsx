@@ -39,7 +39,7 @@ const AddStudent = (props) => {
       "address": ""
   })
 
-    // console.log(datas)
+    console.log(datas)
     const handleChange = (event) => {
       const { name, value } = event.target;
       if (name == "username" || name =="first_name" || name =="last_name" || name=="middle_name" || name =="email" || name=="password"){
@@ -47,7 +47,7 @@ const AddStudent = (props) => {
           ...prevState,
           [name]: value
         }))
-        // console.log(studentData) 
+        console.log(studentData) 
       }
       else{
         setDatas(prevState => ({
@@ -80,7 +80,6 @@ const AddStudent = (props) => {
         "address": datas['address']
             }
             console.log(daat)
-            // const redirection = (<Redirect to="/managestudents" />)
             const fetchstudentpost = fetch("https://e-portal-application.herokuapp.com/adminsite/studentregister/", 
       
             {
@@ -92,6 +91,7 @@ const AddStudent = (props) => {
              body:JSON.stringify(daat), 
            }).then(function(response){
              if (response.ok){
+              //  console.log("ok");
               window.location="/managestudent";
              }
              else{
@@ -277,7 +277,7 @@ const AddStudent = (props) => {
               />
           </FormGroup> */}
         </div>
-        <Button type="submit" className="float-left" color="primary" onClick={handleSubmit}>Submit</Button>
+        <Button className="float-left" color="primary" onClick={handleSubmit}>Submit</Button>
       </Form>
     </div>
   );

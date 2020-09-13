@@ -13,7 +13,7 @@ const StudentDetail = ({match}) => {
     setStudent] = useState([]);
 
   const fetchData = async() => {
-    const fetchedData = await fetch(`http://127.0.0.1:8000/adminsite/studentregister/${match.params.id}`,
+    const fetchedData = await fetch(`https://e-portal-application.herokuapp.com/adminsite/studentregister/${match.params.id}`,
     {
         method: "GET",
         headers: {

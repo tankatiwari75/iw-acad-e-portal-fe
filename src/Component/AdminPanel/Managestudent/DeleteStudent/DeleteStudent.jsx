@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 const DeleteStudent = ({match}) => {
     // const [del, setDel] = useState(false);
     const deleteStudentFunction = async() =>{
-       const fetchdeletedata = await fetch(`http://127.0.0.1:8000/adminsite/teacherregister/${match.params.id}`,
+       const fetchdeletedata = await fetch(`https://e-portal-application.herokuapp.com/adminsite/studentregister/${match.params.id}`,
        {
            method: 'DELETE',
            headers: {
@@ -12,7 +12,7 @@ const DeleteStudent = ({match}) => {
             "Content-Type": "application/json"
           }
         })
-       .then(() => window.location="/managestudent");
+      //  .then(() => window.location="/managestudent");
     //    setDel = true
     }
     useEffect(() => {
@@ -25,7 +25,7 @@ const DeleteStudent = ({match}) => {
         // checkDel
         // <Redirect to="/managestudent" />
         <div>
-
+            Deleting Student
         </div>
     );
 };

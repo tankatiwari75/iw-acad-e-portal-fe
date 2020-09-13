@@ -74,7 +74,7 @@ return (
               {data.map(student => (
                 <tr>
                   <th scope="row">{student.admission_number}</th>
-                  <td>{student.student_user.first_name + "  " + student.student_user.middle_name + " " + student.student_user.last_name}</td>
+                  <td>{student.student_user.first_name + " " + student.student_user.last_name}</td>
                   <td>{student.student_user.username}</td>
                   <td>{student.class_number}</td>
                   <td>{student.address}</td>
