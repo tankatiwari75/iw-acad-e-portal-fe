@@ -26,12 +26,8 @@ const AddClass = (props) => {
     }
 
     const handleSubmit = () => {
-        const data = {
-                "class_number": "",
-               
-            }
             // const redirection = (<Redirect to="/managestudents" />)
-            const fetchsubjectpost = fetch ("http://127.0.0.1:8000/adminsite/add-classnumber/", 
+            const fetchsubjectpost = fetch ("https://e-portal-application.herokuapp.com/adminsite/add-classnumber/", 
             {
                 method: 'POST', 
                 body:JSON.stringify(datas), 
@@ -45,7 +41,7 @@ const AddClass = (props) => {
             .then(() => window.location="/manageclassroom");
             // .then(redirection)
                       
-            console.log(data) 
+            console.log(datas) 
 }
 
 return (

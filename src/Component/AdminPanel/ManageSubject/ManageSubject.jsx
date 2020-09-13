@@ -19,7 +19,7 @@ function ManageSubject({match}) {
         setData] = useState([]);
     
       const fetchData = async() => {
-        const fetchedData = await fetch("http://127.0.0.1:8000/adminsite/subjectregister/",
+        const fetchedData = await fetch("https://e-portal-application.herokuapp.com/adminsite/subjectregister/",
           {
             method: "GET",
             headers: {

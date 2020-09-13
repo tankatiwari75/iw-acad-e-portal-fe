@@ -11,14 +11,12 @@ import { Redirect } from 'react-router-dom';
 
 const AddSubject = (props) => {
     const [datas, setDatas] = useState({
-
-        "class_name": "",
+        "class_number": "",
         "subject_name": "",
         "subject_syllabus": null
-        
     })
 
-    console.log(datas)
+    // console.log(datas)
     const handleChange = (event) => {
         const { name, value } = event.target;
         setDatas(prevState => ({
@@ -28,10 +26,17 @@ const AddSubject = (props) => {
     }
 
     const handleSubmit = () => {
-            const fetchsubjectpost = fetch ("http://127.0.0.1:8000/adminsite/subjectregister/", 
+      const datta = {
+        "class_number": "2",
+        "subject_name": "dell",
+        "subject_syllabus": null
+
+      }
+        console.log(datta)
+            const fetchsubjectpost = fetch ("https://e-portal-application.herokuapp.com/adminsite/subjectregister/", 
             {
                 method: 'POST', 
-                body:JSON.stringify(datas), 
+                body:JSON.stringify(datta), 
                 headers:{ 
                     "Content-Type": "application/json",
                     "Authorization": `Token ${localStorage.getItem('token')}`
@@ -48,21 +53,22 @@ return (
       <Form> 
         <div className='row text-left'>
           <FormGroup className="col-sm-4">
-          <Label for="exampleEmail">Class Name</Label>
+          <Label for="exampleEmail">Class Number</Label>
           <Input type="select"
-             name="class_name"
-             id="class_name"
-             onChange={handleChange} id="exampleSelect">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
+             name="class_number"
+             id="class_number"
+             onChange={handleChange}>
+                  <option>Select Classroom</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
         </Input>
             {/* <Input
               type="text"

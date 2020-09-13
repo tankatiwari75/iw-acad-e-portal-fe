@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 const DeleteNotice = ({match}) => {
     // const [del, setDel] = useState(false);
     const deleteNoticeFunction = async() =>{
-       const fetchdeletedata = await fetch(`http://127.0.0.1:8000/adminsite/noticeboard/${match.params.id}`,
+       const fetchdeletedata = await fetch(`https://e-portal-application.herokuapp.com/adminsite/noticeboard/${match.params.id}`,
        {
            method: 'DELETE',
            headers: {

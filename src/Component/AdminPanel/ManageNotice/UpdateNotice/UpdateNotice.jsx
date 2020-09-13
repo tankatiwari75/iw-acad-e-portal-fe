@@ -20,7 +20,7 @@ function UpdateNotice(props) {
     }, [])
 
     const fetchData = async () => {
-        const fetchedData = await fetch(`http://127.0.0.1:8000/adminsite/noticeboard/${props.match.params.id}`);
+        const fetchedData = await fetch(`https://e-portal-application.herokuapp.com/adminsite/noticeboard/${props.match.params.id}`);
         const jsonFetchedData = await fetchedData.json();
         console.log(jsonFetchedData);
         setDatas(jsonFetchedData);

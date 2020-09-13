@@ -23,7 +23,7 @@ function AddNotice(props) {
     }
 
     const handleSubmit = () => {
-            const fetchnoticepost = fetch ("http://127.0.0.1:8000/adminsite/noticeboard/", 
+            const fetchnoticepost = fetch ("https://e-portal-application.herokuapp.com/adminsite/noticeboard/", 
             {
                 method: 'POST', 
                 body:JSON.stringify(datas), 

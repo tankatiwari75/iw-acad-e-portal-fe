@@ -24,7 +24,7 @@ const Login = () => {
     }
   
     const handleSubmit = () =>{
-            const create_login = fetch("http://127.0.0.1:8000/adminsite/login/",{
+            const create_login = fetch("https://e-portal-application.herokuapp.com/adminsite/login/",{
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

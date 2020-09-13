@@ -10,7 +10,7 @@ import {
 import { Redirect } from 'react-router-dom';
 
 const AddStudent = (props) => {
-  console.log(localStorage.getItem('token'))
+  // console.log(localStorage.getItem('token'))
   const [daata, setDaata] = useState({})
   const [studentData, setStudentData] = useState({
           "username": "",
@@ -81,7 +81,7 @@ const AddStudent = (props) => {
             }
             console.log(daat)
             // const redirection = (<Redirect to="/managestudents" />)
-            const fetchstudentpost = fetch("http://127.0.0.1:8000/adminsite/studentregister/", 
+            const fetchstudentpost = fetch("https://e-portal-application.herokuapp.com/adminsite/studentregister/", 
       
             {
               method: 'POST',
@@ -117,7 +117,7 @@ const AddStudent = (props) => {
 
           <FormGroup className="col-sm-4">
             <Label for="exampleEmail">Middle Name</Label>
-            <Input required
+            <Input
               type="text"
               name="middle_name"
               id="middle_name"
